@@ -1,0 +1,50 @@
+{
+    "users": [
+      {
+        "name": "John Smith",
+        "active_books_checked_out": [
+          {
+            "book_id": 1,
+            "title": "Harry Potter and the Sorcerer's Stone",
+            "due_date": "2025-03-10"
+          }
+        ],
+        "borrowing_history": [
+          {
+            "book_id": 3,
+            "title": "Harry Potter and the Prisoner of Azkaban",
+            "borrowed_date": "2025-01-15",
+            "returned_date": "2025-02-01"
+          },
+          {
+            "book_id": 5,
+            "title": "Harry Potter and the Order of the Phoenix",
+            "borrowed_date": "2024-12-10",
+            "returned_date": "2025-01-05"
+          }
+        ],
+        "wish_list": [
+          {
+            "book_id": 2,
+            "title": "Harry Potter and the Chamber of Secrets"
+          },
+          {
+            "book_id": 7,
+            "title": "Harry Potter and the Deathly Hallows"
+          }
+        ],
+        "membership_dues": {
+          "amount": 10.00,
+          "due_date": "2025-04-01"
+        },
+        "fees": {
+          "overdue_fines": 5.00,
+          "damaged_book_fees": 0.00
+        },
+        "username": "JohnSmith",
+        "password": "password",
+        "administrator": false
+      }
+    ]
+  }
+  
