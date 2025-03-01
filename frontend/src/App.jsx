@@ -11,20 +11,17 @@ function App() {
   return (
     <Router>
       <nav>
-        <ul>
-          <li>
+        <div class="navbar">
+          <div class="left-navbar">
+            <Link id="logo" to="/">LOGO/TITLE/ICON IDK</Link>
+          </div>
+          <div class="right-navbar">
             <Link to="/">Home</Link>
-          </li>
-          <li>
             <Link to="/about">About</Link>
-          </li>
-          <li>
             <Link to="/credits">Credits</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
+            <Link to="/about">Contact</Link>
+          </div>
+        </div>
       </nav>
 
       <Routes>

@@ -4,3 +4,32 @@
   background-color: #181a1b;
   color: white;
 }
+
+.navbar {
+  background-color: rgb(65, 68, 73);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1200px;
+  height: 60px;
+  align-items: center;
+}
+
+.navbar a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 60px;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#logo {
+  font-size: 22px;
+}
