@@ -1,67 +1,93 @@
 {
-    "books": [
-      {
-        "id": 1,
-        "title": "Harry Potter and the Sorcerer's Stone",
-        "author": "J.K. Rowling",
-        "checked_out": true,
-        "borrower": {
-          "name": "John Smith",
-          "due_date": "2025-03-10"
-        },
-        "reservation": null
+  "books": [
+    {
+      "id": 1,
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "checked_out": true,
+      "borrower": {
+        "name": "John Smith",
+        "due_date": "2025-03-10"
       },
-      {
-        "id": 2,
-        "title": "Harry Potter and the Chamber of Secrets",
-        "author": "J.K. Rowling",
-        "checked_out": false,
-        "borrower": null,
-        "reservation": {
-          "start_date": "2025-03-01",
-          "end_date": "2025-03-08"
-        }
-      },
-      {
-        "id": 3,
-        "title": "Harry Potter and the Prisoner of Azkaban",
-        "author": "J.K. Rowling",
-        "checked_out": false,
-        "borrower": null,
-        "reservation": null
-      },
-      {
-        "id": 4,
-        "title": "Harry Potter and the Goblet of Fire",
-        "author": "J.K. Rowling",
-        "checked_out": false,
-        "borrower": null,
-        "reservation": null
-      },
-      {
-        "id": 5,
-        "title": "Harry Potter and the Order of the Phoenix",
-        "author": "J.K. Rowling",
-        "checked_out": false,
-        "borrower": null,
-        "reservation": null
-      },
-      {
-        "id": 6,
-        "title": "Harry Potter and the Half-Blood Prince",
-        "author": "J.K. Rowling",
-        "checked_out": false,
-        "borrower": null,
-        "reservation": null
-      },
-      {
-        "id": 7,
-        "title": "Harry Potter and the Deathly Hallows",
-        "author": "J.K. Rowling",
-        "checked_out": false,
-        "borrower": null,
-        "reservation": null
+      "reservation": null
+    },
+    {
+      "id": 2,
+      "title": "Harry Potter and the Chamber of Secrets",
+      "author": "J.K. Rowling",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": {
+        "start_date": "2025-03-01",
+        "end_date": "2025-03-08"
       }
-    ]
+    },
+    {
+      "id": 3,
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "author": "J.K. Rowling",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 4,
+      "title": "Harry Potter and the Goblet of Fire",
+      "author": "J.K. Rowling",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 5,
+      "title": "Harry Potter and the Order of the Phoenix",
+      "author": "J.K. Rowling",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 6,
+      "title": "Harry Potter and the Half-Blood Prince",
+      "author": "J.K. Rowling",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 7,
+      "title": "Harry Potter and the Deathly Hallows",
+      "author": "J.K. Rowling",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741124812345,
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741124834291,
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741125039197,
+      "title": "test3",
+      "author": "test2",
+      "checked_out": false,
+      "borrower": {
+        "name": "Jane Doe",
+        "due_date": "2025-1-1"
+      },
+      "reservation": null
+    }
+  ]
 }
-  

@@ -6,6 +6,6 @@
 
 Frontend: code belongs in /src folder, logos/pictures go in /public or /src/assets folder accordingly.
 
-Backend: code goes in /controllers and /routes. database files go in /database (i didnt make all files needed yet)
+Backend: code goes in /controllers and /routes. database files go in /database (i didnt make all database files needed yet)
 
 DONT FORGET TO BRANCH
