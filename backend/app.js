@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3000;
 const booksRouter = require("./routes/booksRoutes");
 
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
@@ -11,6 +12,7 @@ app.use(cors());
 // Sets api /books endpoint
 app.use("/books", booksRouter);
 
+// Test route to quickly see if server is running
 app.get("/", (req, res) => {
     res.json("If you see this, its working");
 });
