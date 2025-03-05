@@ -38,13 +38,56 @@
           "due_date": "2025-04-01"
         },
         "fees": {
-          "overdue_fines": 5.00,
-          "damaged_book_fees": 0.00
+          "overdue_fines": 5.00
         },
         "username": "JohnSmith",
         "password": "password",
         "administrator": false
+      },
+      {
+        "name": "Jane Doe",
+        "active_books_checked_out": [
+          {
+            "book_id": 6,
+            "title": "Harry Potter and the Half-Blood Prince",
+            "due_date": "2025-03-15"
+          },
+          {
+            "book_id": 1741158159533,
+            "title": "The Lord of the Rings: The Two Towers",
+            "due_date": "2025-03-20"
+          }
+        ],
+        "borrowing_history": [
+          {
+            "book_id": 1741158081333,
+            "title": "The Lord of the Rings: The Fellowship of the Ring",
+            "borrowed_date": "2025-01-05",
+            "returned_date": "2025-02-10"
+          }
+        ],
+        "wish_list": [
+          {
+            "book_id": 3,
+            "title": "Harry Potter and the Prisoner of Azkaban"
+          },
+          {
+            "book_id": 7,
+            "title": "Harry Potter and the Deathly Hallows"
+          }
+        ],
+        "membership_dues": {
+          "amount": 10.00,
+          "due_date": "2025-04-01"
+        },
+        "fees": {
+          "overdue_fines": 0.00
+        },
+        "username": "JaneDoe",
+        "password": "securepassword",
+        "administrator": false
       }
+      
     ]
   }
   

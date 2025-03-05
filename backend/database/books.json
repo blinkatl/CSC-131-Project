@@ -63,14 +63,6 @@
       "reservation": null
     },
     {
-      "id": 1741124812345,
-      "title": "The Lord of the Rings",
-      "author": "J.R.R. Tolkien",
-      "checked_out": false,
-      "borrower": null,
-      "reservation": null
-    },
-    {
       "id": 1741124834291,
       "title": "The Hobbit",
       "author": "J.R.R. Tolkien",
@@ -87,6 +79,30 @@
         "name": "Jane Doe",
         "due_date": "2025-1-1"
       },
+      "reservation": null
+    },
+    {
+      "id": 1741158081333,
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "author": "J.R.R. Tolkien",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741158159533,
+      "title": "The Lord of the Rings: The Two Towers",
+      "author": "J.R.R. Tolkien",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741158173593,
+      "title": "The Lord of the Rings: The Return of the King",
+      "author": "J.R.R. Tolkien",
+      "checked_out": false,
+      "borrower": null,
       "reservation": null
     }
   ]
