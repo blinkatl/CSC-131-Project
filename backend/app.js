@@ -3,14 +3,15 @@ const cors = require("cors");
 const app = express();
 const PORT = 3000;
 const booksRouter = require("./routes/booksRoutes");
+const usersRouter = require("./routes/usersRoutes");
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-// Sets api /books endpoint
-app.use("/books", booksRouter);
+app.use("/books", booksRouter);     // Sets api /books endpoint
+app.use("/users", usersRouter);     // Sets api /users endpoint
 
 // Test route to quickly see if server is running
 app.get("/", (req, res) => {

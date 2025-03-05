@@ -1,93 +1,128 @@
 {
-    "users": [
-      {
-        "name": "John Smith",
-        "active_books_checked_out": [
-          {
-            "book_id": 1,
-            "title": "Harry Potter and the Sorcerer's Stone",
-            "due_date": "2025-03-10"
-          }
-        ],
-        "borrowing_history": [
-          {
-            "book_id": 3,
-            "title": "Harry Potter and the Prisoner of Azkaban",
-            "borrowed_date": "2025-01-15",
-            "returned_date": "2025-02-01"
-          },
-          {
-            "book_id": 5,
-            "title": "Harry Potter and the Order of the Phoenix",
-            "borrowed_date": "2024-12-10",
-            "returned_date": "2025-01-05"
-          }
-        ],
-        "wish_list": [
-          {
-            "book_id": 2,
-            "title": "Harry Potter and the Chamber of Secrets"
-          },
-          {
-            "book_id": 7,
-            "title": "Harry Potter and the Deathly Hallows"
-          }
-        ],
-        "membership_dues": {
-          "amount": 10.00,
-          "due_date": "2025-04-01"
+  "users": [
+    {
+      "id": 1,
+      "name": "John Smith",
+      "active_books_checked_out": [
+        {
+          "book_id": 1,
+          "title": "Harry Potter and the Sorcerer's Stone",
+          "due_date": "2025-03-10"
+        }
+      ],
+      "borrowing_history": [
+        {
+          "book_id": 3,
+          "title": "Harry Potter and the Prisoner of Azkaban",
+          "borrowed_date": "2025-01-15",
+          "returned_date": "2025-02-01"
         },
-        "fees": {
-          "overdue_fines": 5.00
+        {
+          "book_id": 5,
+          "title": "Harry Potter and the Order of the Phoenix",
+          "borrowed_date": "2024-12-10",
+          "returned_date": "2025-01-05"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 2,
+          "title": "Harry Potter and the Chamber of Secrets"
         },
-        "username": "JohnSmith",
-        "password": "password",
-        "administrator": false
+        {
+          "book_id": 7,
+          "title": "Harry Potter and the Deathly Hallows"
+        }
+      ],
+      "membership_dues": {
+        "amount": 10,
+        "due_date": "2025-04-01"
       },
-      {
-        "name": "Jane Doe",
-        "active_books_checked_out": [
-          {
-            "book_id": 6,
-            "title": "Harry Potter and the Half-Blood Prince",
-            "due_date": "2025-03-15"
-          },
-          {
-            "book_id": 1741158159533,
-            "title": "The Lord of the Rings: The Two Towers",
-            "due_date": "2025-03-20"
-          }
-        ],
-        "borrowing_history": [
-          {
-            "book_id": 1741158081333,
-            "title": "The Lord of the Rings: The Fellowship of the Ring",
-            "borrowed_date": "2025-01-05",
-            "returned_date": "2025-02-10"
-          }
-        ],
-        "wish_list": [
-          {
-            "book_id": 3,
-            "title": "Harry Potter and the Prisoner of Azkaban"
-          },
-          {
-            "book_id": 7,
-            "title": "Harry Potter and the Deathly Hallows"
-          }
-        ],
-        "membership_dues": {
-          "amount": 10.00,
-          "due_date": "2025-04-01"
+      "fees": {
+        "overdue_fines": 5
+      },
+      "username": "JohnSmith",
+      "password": "password",
+      "administrator": false
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "active_books_checked_out": [
+        {
+          "book_id": 6,
+          "title": "Harry Potter and the Half-Blood Prince",
+          "due_date": "2025-03-15"
         },
-        "fees": {
-          "overdue_fines": 0.00
+        {
+          "book_id": 1741158159533,
+          "title": "The Lord of the Rings: The Two Towers",
+          "due_date": "2025-03-20"
+        }
+      ],
+      "borrowing_history": [
+        {
+          "book_id": 1741158081333,
+          "title": "The Lord of the Rings: The Fellowship of the Ring",
+          "borrowed_date": "2025-01-05",
+          "returned_date": "2025-02-10"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 3,
+          "title": "Harry Potter and the Prisoner of Azkaban"
         },
-        "username": "JaneDoe",
-        "password": "securepassword",
-        "administrator": false
-      }
-      
-    ]
-  }
-  
+        {
+          "book_id": 7,
+          "title": "Harry Potter and the Deathly Hallows"
+        }
+      ],
+      "membership_dues": {
+        "amount": 10,
+        "due_date": "2025-04-01"
+      },
+      "fees": {
+        "overdue_fines": 0
+      },
+      "username": "JaneDoe",
+      "password": "securepassword",
+      "administrator": false
+    },
+    {
+      "id": 1741159181891,
+      "name": "Alice Johnson",
+      "active_books_checked_out": [
+        {
+          "book_id": 6,
+          "title": "Harry Potter and the Half-Blood Prince",
+          "due_date": "2025-05-01"
+        }
+      ],
+      "borrowing_history": [
+        {
+          "book_id": 3,
+          "title": "Harry Potter and the Prisoner of Azkaban",
+          "borrowed_date": "2025-01-15",
+          "returned_date": "2025-02-01"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 7,
+          "title": "Harry Potter and the Deathly Hallows"
+        }
+      ],
+      "membership_dues": {
+        "amount": 10,
+        "due_date": "2025-06-01"
+      },
+      "fees": {
+        "overdue_fines": 5
+      },
+      "username": "AliceJohnson",
+      "password": "test",
+      "administrator": false
+    }
+  ]
+}
