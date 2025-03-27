@@ -71,17 +71,6 @@
       "reservation": null
     },
     {
-      "id": 1741125039197,
-      "title": "test3",
-      "author": "test2",
-      "checked_out": false,
-      "borrower": {
-        "name": "Jane Doe",
-        "due_date": "2025-1-1"
-      },
-      "reservation": null
-    },
-    {
       "id": 1741158081333,
       "title": "The Lord of the Rings: The Fellowship of the Ring",
       "author": "J.R.R. Tolkien",
@@ -101,6 +90,97 @@
       "id": 1741158173593,
       "title": "The Lord of the Rings: The Return of the King",
       "author": "J.R.R. Tolkien",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741185000000,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741186000000,
+      "title": "1984",
+      "author": "George Orwell",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741187000000,
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "checked_out": true,
+      "borrower": {
+        "name": "Alice Johnson",
+        "due_date": "2025-03-15"
+      },
+      "reservation": null
+    },
+    {
+      "id": 1741188000000,
+      "title": "Moby Dick",
+      "author": "Herman Melville",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741189000000,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741190000000,
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741191000000,
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741192000000,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741193000000,
+      "title": "The Odyssey",
+      "author": "Homer",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741194000000,
+      "title": "War and Peace",
+      "author": "Leo Tolstoy",
+      "checked_out": false,
+      "borrower": null,
+      "reservation": null
+    },
+    {
+      "id": 1741195000000,
+      "title": "The Brothers Karamazov",
+      "author": "Fyodor Dostoevsky",
       "checked_out": false,
       "borrower": null,
       "reservation": null

@@ -2,52 +2,29 @@
   "users": [
     {
       "id": 1,
-      "name": "John Smith",
-      "active_books_checked_out": [
-        {
-          "book_id": 1,
-          "title": "Harry Potter and the Sorcerer's Stone",
-          "due_date": "2025-03-10"
-        }
-      ],
-      "borrowing_history": [
-        {
-          "book_id": 3,
-          "title": "Harry Potter and the Prisoner of Azkaban",
-          "borrowed_date": "2025-01-15",
-          "returned_date": "2025-02-01"
-        },
-        {
-          "book_id": 5,
-          "title": "Harry Potter and the Order of the Phoenix",
-          "borrowed_date": "2024-12-10",
-          "returned_date": "2025-01-05"
-        }
-      ],
+      "name": "Harry Potter",
+      "active_books_checked_out": [],
+      "borrowing_history": [],
       "wish_list": [
         {
-          "book_id": 2,
-          "title": "Harry Potter and the Chamber of Secrets"
-        },
-        {
-          "book_id": 7,
-          "title": "Harry Potter and the Deathly Hallows"
+          "book_id": 1,
+          "title": "Harry Potter and the Sorcerer's Stone"
         }
       ],
       "membership_dues": {
-        "amount": 10,
-        "due_date": "2025-04-01"
+        "amount": 0,
+        "due_date": "2025-03-27"
       },
       "fees": {
-        "overdue_fines": 5
+        "overdue_fines": 0
       },
-      "username": "JohnSmith",
+      "username": "HarryP",
       "password": "password",
-      "administrator": false
+      "administrator": true
     },
     {
       "id": 2,
-      "name": "Jane Doe",
+      "name": "Hermione Granger",
       "active_books_checked_out": [
         {
           "book_id": 6,
@@ -85,13 +62,13 @@
       "fees": {
         "overdue_fines": 0
       },
-      "username": "JaneDoe",
+      "username": "HermioneG",
       "password": "securepassword",
       "administrator": false
     },
     {
       "id": 1741159181891,
-      "name": "Alice Johnson",
+      "name": "Ron Weasley",
       "active_books_checked_out": [
         {
           "book_id": 6,
@@ -120,9 +97,146 @@
       "fees": {
         "overdue_fines": 5
       },
-      "username": "AliceJohnson",
+      "username": "RonW",
       "password": "test",
       "administrator": false
+    },
+    {
+      "id": 1743195127845,
+      "name": "Draco Malfoy",
+      "active_books_checked_out": [
+        {
+          "book_id": 1741189000000,
+          "title": "The Great Gatsby",
+          "due_date": "2025-03-20"
+        }
+      ],
+      "borrowing_history": [],
+      "wish_list": [
+        {
+          "book_id": 1741186000000,
+          "title": "1984"
+        }
+      ],
+      "membership_dues": {
+        "amount": 5,
+        "due_date": "2025-05-01"
+      },
+      "fees": {
+        "overdue_fines": 0
+      },
+      "username": "DracoM",
+      "password": "malfoy123",
+      "administrator": false
+    },
+    {
+      "id": 1743196254872,
+      "name": "Luna Lovegood",
+      "active_books_checked_out": [],
+      "borrowing_history": [
+        {
+          "book_id": 2,
+          "title": "Harry Potter and the Chamber of Secrets",
+          "borrowed_date": "2025-02-10",
+          "returned_date": "2025-02-28"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 1741185000000,
+          "title": "To Kill a Mockingbird"
+        }
+      ],
+      "membership_dues": {
+        "amount": 0,
+        "due_date": "2025-04-10"
+      },
+      "fees": {
+        "overdue_fines": 2
+      },
+      "username": "LunaL",
+      "password": "loony456",
+      "administrator": false
+    },
+    {
+      "id": 1743197436218,
+      "name": "Neville Longbottom",
+      "active_books_checked_out": [
+        {
+          "book_id": 1741190000000,
+          "title": "Crime and Punishment",
+          "due_date": "2025-03-22"
+        }
+      ],
+      "borrowing_history": [],
+      "wish_list": [],
+      "membership_dues": {
+        "amount": 15,
+        "due_date": "2025-06-15"
+      },
+      "fees": {
+        "overdue_fines": 0
+      },
+      "username": "NevilleL",
+      "password": "nevillepass",
+      "administrator": false
+    },
+    {
+      "id": 1743198574125,
+      "name": "Ginny Weasley",
+      "active_books_checked_out": [],
+      "borrowing_history": [
+        {
+          "book_id": 1741193000000,
+          "title": "The Odyssey",
+          "borrowed_date": "2025-01-20",
+          "returned_date": "2025-02-15"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 1741195000000,
+          "title": "The Brothers Karamazov"
+        }
+      ],
+      "membership_dues": {
+        "amount": 10,
+        "due_date": "2025-05-10"
+      },
+      "fees": {
+        "overdue_fines": 0
+      },
+      "username": "GinnyW",
+      "password": "ginny789",
+      "administrator": false
+    },
+    {
+      "id": 1743199652187,
+      "name": "Severus Snape",
+      "active_books_checked_out": [
+        {
+          "book_id": 1741194000000,
+          "title": "War and Peace",
+          "due_date": "2025-03-30"
+        }
+      ],
+      "borrowing_history": [],
+      "wish_list": [
+        {
+          "book_id": 1741188000000,
+          "title": "Moby Dick"
+        }
+      ],
+      "membership_dues": {
+        "amount": 5,
+        "due_date": "2025-04-20"
+      },
+      "fees": {
+        "overdue_fines": 3
+      },
+      "username": "SeverusS",
+      "password": "potionsmaster",
+      "administrator": true
     }
   ]
 }
