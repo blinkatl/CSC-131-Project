@@ -112,7 +112,7 @@ function Users() {
       id: editingUser.id,
       name: editingUser.name,
       username: editingUser.username,
-      administrator: editingUser.administrator,
+      administrator: Boolean(editingUser.administrator),
       active_books_checked_out: editingUser.active_books_checked_out,
       borrowing_history: editingUser.borrowing_history,
       wish_list: editingUser.wish_list,
@@ -165,17 +165,29 @@ function Users() {
     setBookSearchTerm("");
   };
 
+  const initNewUser = () => {
+    setCreatingUser({
+      name: '',
+      username: '',
+      password: '',
+      administrator: false
+    });
+  };
+
   const handleCreateUser = () => {
     if (!creatingUser.name.trim() || !creatingUser.username.trim()) {
       alert("Name and Username cannot be empty");
       return;
     }
 
+    // Debug log to check the value before creating user
+    console.log("Administrator value before creating user:", creatingUser.administrator);
+
     const newUserData = {
       name: creatingUser.name,
       username: creatingUser.username,
       password: creatingUser.password,
-      administrator: creatingUser.administrator || false,
+      administrator: !!creatingUser.administrator,
       wish_list: [],
       active_books_checked_out: [],
       borrowing_history: [],
@@ -188,6 +200,8 @@ function Users() {
       }
     };
 
+    console.log("Creating user with data:", JSON.stringify(newUserData));
+
     fetch("http://localhost:3000/users", {
       method: 'POST',
       headers: {
@@ -197,13 +211,31 @@ function Users() {
     })
     .then(response => {
       if (response.ok) {
-        fetchUsers();
-        setCreatingUser(null);
+        return response.json();
       } else {
-        console.error('Failed to create user');
+        throw new Error('Failed to create user');
       }
     })
+    .then(data => {
+      console.log("Server response:", data);
+      fetchUsers();
+      setCreatingUser(null);
+    })
     .catch(error => console.error('Error creating user:', error));
+  };
+
+  const handleCheckboxChange = (e) => {
+    const isChecked = e.target.checked;
+    console.log("Checkbox changed to:", isChecked);
+    
+    setCreatingUser(prev => {
+      const updated = {
+        ...prev,
+        administrator: isChecked
+      };
+      console.log("Updated creating user state:", updated);
+      return updated;
+    });
   };
 
   const filteredBooks = books.filter(book => 
@@ -216,12 +248,7 @@ function Users() {
         <h2>Users</h2>
         <button 
           className="create-user-btn" 
-          onClick={() => setCreatingUser({
-            name: '',
-            username: '',
-            password: '',
-            administrator: false
-          })}
+          onClick={initNewUser}
         >
           Create User
         </button>
@@ -278,11 +305,12 @@ function Users() {
                   />
                 </label>
 
-                <label>
+                <label className="checkbox-label">
                   Administrator:
                   <input 
                     type="checkbox" 
-                    checked={editingUser.administrator}
+                    className="admin-checkbox"
+                    checked={editingUser.administrator === true}
                     onChange={(e) => setEditingUser({...editingUser, administrator: e.target.checked})}
                   />
                 </label>
@@ -491,12 +519,13 @@ function Users() {
               />
             </label>
 
-            <label>
+            <label className="checkbox-label">
               Administrator:
               <input 
                 type="checkbox" 
-                checked={creatingUser.administrator}
-                onChange={(e) => setCreatingUser({...creatingUser, administrator: e.target.checked})}
+                className="admin-checkbox"
+                checked={Boolean(creatingUser.administrator)}
+                onChange={handleCheckboxChange}
               />
             </label>
 

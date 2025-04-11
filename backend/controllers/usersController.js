@@ -57,7 +57,7 @@ const getUserById = (req, res) => {
 
 // Function to add a new user
 const addUser = (req, res) => {
-    const { name, username, password } = req.body;
+    const { name, username, password, administrator } = req.body;
 
     // Check for missing fields
     if (!name || !username || !password) return res.status(400).json({ message: "Missing required fields (name, username, password)" });
@@ -83,7 +83,7 @@ const addUser = (req, res) => {
             fees: null,
             username,
             password,
-            administrator: false 
+            administrator: Boolean(administrator) 
         };
 
         // Add the new user to the users array
