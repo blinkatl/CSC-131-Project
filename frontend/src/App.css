@@ -12,38 +12,9 @@
   flex-direction: column;
 }
 
-.navbar {
-  background-color: rgb(65, 68, 73);
-  overflow: hidden;
-  display: flex;
-  justify-content: space-evenly;
-  gap: 1200px;
-  height: 60px;
-  align-items: center;
-}
-
-.navbar a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  line-height: 60px;
-}
-
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-#logo {
-  font-size: 22px;
-}
-
 .main-content {
   display: flex;
-  height: calc(100vh - 60px);
+  height: 100vh; 
   width: 100%;
   position: relative;
 }
@@ -55,4 +26,10 @@
   background-color: #181a1b;
   color: white;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  flex: 1;
 }
