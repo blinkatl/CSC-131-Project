@@ -9,28 +9,72 @@ import Books from "./Books";
 import Users from './Users';
 import Dashboard from './Dashboard';
 import Footer from './Footer';
+import LoginSignUp from './LoginSignUp';
+
+const MainLayout = ({ children }) => (
+  <div className="main-content">
+    <Sidebar />
+    <div className="content-area">
+      <div className="content-wrapper">
+        {children}
+      </div>
+      <Footer />
+    </div>
+  </div>
+);
+
+const FullScreenLayout = ({ children }) => (
+  <div className="fullscreen-layout">
+    {children}
+  </div>
+);
 
 function App() {
   return (
     <Router>
       <div className='app-container'>
-        <div className="main-content">
-          <Sidebar />
-          <div className="content-area">
-            <div className="content-wrapper">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/credits" element={<Credits />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/admin/dashboard" element={<Dashboard />} />
-                <Route path="/admin/books" element={<Books />} />
-                <Route path="/admin/users" element={<Users />} />
-              </Routes>
-            </div>
-            <Footer />
-          </div>
-        </div>
+        <Routes>
+          <Route path="/login" element={
+            <FullScreenLayout>
+              <LoginSignUp />
+            </FullScreenLayout>
+          } />
+          <Route path="/" element={
+            <MainLayout>
+              <Home />
+            </MainLayout>
+          } />
+          <Route path="/about" element={
+            <MainLayout>
+              <About />
+            </MainLayout>
+          } />
+          <Route path="/credits" element={
+            <MainLayout>
+              <Credits />
+            </MainLayout>
+          } />
+          <Route path="/contact" element={
+            <MainLayout>
+              <Contact />
+            </MainLayout>
+          } />
+          <Route path="/admin/dashboard" element={
+            <MainLayout>
+              <Dashboard />
+            </MainLayout>
+          } />
+          <Route path="/admin/books" element={
+            <MainLayout>
+              <Books />
+            </MainLayout>
+          } />
+          <Route path="/admin/users" element={
+            <MainLayout>
+              <Users />
+            </MainLayout>
+          } />
+        </Routes>
       </div>
     </Router>
   );
