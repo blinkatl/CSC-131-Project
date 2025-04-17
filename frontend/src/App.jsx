@@ -40,9 +40,9 @@ function App() {
             </FullScreenLayout>
           } />
           <Route path="/" element={
-            <MainLayout>
+            <FullScreenLayout>
               <Home />
-            </MainLayout>
+            </FullScreenLayout>
           } />
           <Route path="/about" element={
             <MainLayout>

@@ -72,15 +72,27 @@ const addUser = (req, res) => {
             usersData.users = [];
         }
 
-        // Create new user
+        // Calculate the due date (one month from now)
+        const currentDate = new Date();
+        const dueDate = new Date(currentDate);
+        dueDate.setMonth(dueDate.getMonth() + 1);
+        const formattedDueDate = dueDate.toISOString().split('T')[0];
+
+        // Create new user with empty arrays and initial dues/fees
         const newUser = {
             id: Date.now(),
             name,
-            active_books_checked_out: null,
-            borrowing_history: null,
-            wish_list: null,
-            membership_dues: null,
-            fees: null,
+            active_books_checked_out: [],
+            borrowing_history: [],
+            wish_list: [],
+            membership_dues: {
+                amount: 5,
+                due_date: formattedDueDate
+            },
+            fees: {
+                overdue_fines: 0,
+                new_user_fee: 5
+            },
             username,
             password,
             administrator: Boolean(administrator) 
