@@ -85,7 +85,7 @@
       "checked_out": true,
       "borrower": {
         "name": "a a",
-        "due_date": "2025-04-25"
+        "due_date": "2025-05-09"
       },
       "reservation": null
     },
@@ -151,7 +151,12 @@
       "author": "Jane Austen",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-19",
+        "end_date": "2025-04-26",
+        "name": "a a",
+        "user_id": 1744939015800
+      }
     },
     {
       "id": 1741188000000,
@@ -192,7 +197,7 @@
       "id": 1741191000000,
       "title": "Brave New World",
       "author": "Aldous Huxley",
-      "checked_out": true, 
+      "checked_out": true,
       "borrower": {
         "name": "Ron Weasley",
         "due_date": "2025-04-15"
@@ -213,7 +218,12 @@
       "author": "Homer",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-19",
+        "end_date": "2025-04-26",
+        "name": "a a",
+        "user_id": 1744939015800
+      }
     },
     {
       "id": 1741194000000,

@@ -400,7 +400,22 @@
           "returned_date": "2025-03-10"
         }
       ],
-      "reservations": [],
+      "reservations": [
+        {
+          "book_id": 1741193000000,
+          "title": "The Odyssey",
+          "author": "Homer",
+          "start_date": "2025-04-19",
+          "end_date": "2025-04-26"
+        },
+        {
+          "book_id": 1741187000000,
+          "title": "Pride and Prejudice",
+          "author": "Jane Austen",
+          "start_date": "2025-04-19",
+          "end_date": "2025-04-26"
+        }
+      ],
       "wish_list": [
         {
           "book_id": 1741192000000,
