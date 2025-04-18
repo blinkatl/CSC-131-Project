@@ -6,7 +6,6 @@
 // - updateUser: Updates an existing user in the database (users.json) based on the provided ID and new data.
 // - deleteUser: Deletes a user from the database (users.json) based on the provided ID.
 
-
 const fs = require("fs");
 const path = require("path");
 
@@ -85,6 +84,7 @@ const addUser = (req, res) => {
             active_books_checked_out: [],
             borrowing_history: [],
             wish_list: [],
+            reservations: [], // Add reservations field
             membership_dues: {
                 amount: 5,
                 due_date: formattedDueDate
@@ -113,7 +113,7 @@ const addUser = (req, res) => {
 
 // Function to update user
 const updateUser = (req, res) => {
-    const { id, name, username, password, active_books_checked_out, borrowing_history, wish_list, membership_dues, fees, administrator } = req.body;
+    const { id, name, username, password, active_books_checked_out, borrowing_history, wish_list, reservations, membership_dues, fees, administrator } = req.body;
 
     // Load users data
     const users = loadUsers();
@@ -134,11 +134,12 @@ const updateUser = (req, res) => {
         username: username ?? oldUser.username,
         password: password ?? oldUser.password,
         administrator: administrator ?? oldUser.administrator,
-        active_books_checked_out: active_books_checked_out ?? null,
-        borrowing_history: borrowing_history ?? null,
-        wish_list: wish_list ?? null,
-        membership_dues: membership_dues ?? null,
-        fees: fees ?? null
+        active_books_checked_out: active_books_checked_out ?? oldUser.active_books_checked_out,
+        borrowing_history: borrowing_history ?? oldUser.borrowing_history,
+        wish_list: wish_list ?? oldUser.wish_list,
+        reservations: reservations ?? oldUser.reservations,
+        membership_dues: membership_dues ?? oldUser.membership_dues,
+        fees: fees ?? oldUser.fees
     };
 
     // Update the user in the users array
@@ -153,7 +154,6 @@ const updateUser = (req, res) => {
         res.status(500).json({ message: "There was an error updating the user." });
     }
 };
-
 
 // Function to delete a user
 const deleteUser = (req, res) => {

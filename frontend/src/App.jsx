@@ -9,6 +9,7 @@ import Books from "./Books";
 import Users from './Users';
 import Dashboard from './Dashboard';
 import UserDashboard from './UserDashboard'; 
+import UserBooks from './UserBooks';
 import Footer from './Footer';
 import LoginSignUp from './LoginSignUp';
 import { ProtectedRoute, AdminRoute } from './ProtectedRoute';
@@ -68,6 +69,11 @@ function App() {
             <Route path="/dashboard" element={
               <MainLayout>
                 <UserDashboard />
+              </MainLayout>
+            } />
+            <Route path="/books" element={
+              <MainLayout>
+                <UserBooks />
               </MainLayout>
             } />
           </Route>

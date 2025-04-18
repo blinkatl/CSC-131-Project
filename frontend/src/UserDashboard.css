@@ -1,0 +1,372 @@
+.user-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.dashboard-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 2px;
+}
+
+.date-display {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.search-card {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.dashboard-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  color: #f0f0f0;
+  height: auto;
+  min-height: 220px;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.view-all {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+}
+
+.card-content {
+  padding: 12px 15px;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 160px;
+}
+
+.search-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  max-height: none;
+  height: 100%;
+}
+
+.card-footer {
+  padding: 10px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-button {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+
+.action-button:hover {
+  background-color: #2980b9;
+}
+
+/* Book list styles */
+.book-list, .reservation-list, .activity-list, .notification-list, .wishlist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.book-item, .reservation-item, .activity-item, .notification-item, .wishlist-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.book-item:last-child, .reservation-item:last-child, .activity-item:last-child, 
+.notification-item:last-child, .wishlist-item:last-child {
+  border-bottom: none;
+}
+
+.book-info h3, .notification-details h3 {
+  margin: 0 0 3px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.book-info p, .notification-details p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.book-due-date, .wishlist-date {
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+.overdue {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* Membership and fees styles */
+.membership-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.membership-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.status-badge.active {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.status-badge.due {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.fees-breakdown h3 {
+  font-size: 0.95rem;
+  margin: 10px 0 5px 0;
+}
+
+.fees-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fees-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 3px 0;
+  color: #ddd;
+}
+
+.fees-total {
+  font-weight: bold;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 5px !important;
+  margin-top: 3px;
+}
+
+.activity-item, .notification-item {
+  display: flex;
+  gap: 8px;
+}
+
+.activity-icon, .notification-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #3498db;
+}
+
+.activity-details, .notification-details {
+  flex-grow: 1;
+}
+
+.activity-action {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.activity-date, .notification-date {
+  font-size: 0.7rem;
+  color: #aaa;
+  margin-top: 3px;
+}
+
+.empty-state {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.85rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.1rem;
+  color: #e74c3c;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border: 1px solid #444;
+  background-color: #333;
+  color: #f0f0f0;
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.search-loading {
+  margin-top: 8px;
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.search-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #444;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item .book-info {
+  flex-grow: 1;
+  padding-right: 10px;
+  overflow: hidden;
+}
+
+.search-result-item .book-info h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+}
+
+.book-status {
+  font-weight: bold;
+  align-self: center;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.no-results {
+  margin-top: 8px;
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .search-card {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .search-card {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .search-card {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}

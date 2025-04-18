@@ -3,12 +3,29 @@
     {
       "id": 1,
       "name": "Harry Potter",
-      "active_books_checked_out": [],
-      "borrowing_history": [],
+      "active_books_checked_out": [
+        {
+          "book_id": 1,
+          "title": "Harry Potter and the Sorcerer's Stone",
+          "author": "J.K. Rowling",
+          "due_date": "2025-04-10"
+        }
+      ],
+      "borrowing_history": [
+        {
+          "book_id": 5,
+          "title": "Harry Potter and the Order of the Phoenix",
+          "author": "J.K. Rowling",
+          "borrowed_date": "2025-01-10",
+          "returned_date": "2025-02-08"
+        }
+      ],
+      "reservations": [],
       "wish_list": [
         {
           "book_id": 1,
-          "title": "Harry Potter and the Sorcerer's Stone"
+          "title": "Harry Potter and the Sorcerer's Stone",
+          "author": "J.K. Rowling"
         }
       ],
       "membership_dues": {
@@ -29,11 +46,13 @@
         {
           "book_id": 6,
           "title": "Harry Potter and the Half-Blood Prince",
+          "author": "J.K. Rowling",
           "due_date": "2025-03-15"
         },
         {
           "book_id": 1741158159533,
           "title": "The Lord of the Rings: The Two Towers",
+          "author": "J.R.R. Tolkien",
           "due_date": "2025-03-20"
         }
       ],
@@ -41,18 +60,37 @@
         {
           "book_id": 1741158081333,
           "title": "The Lord of the Rings: The Fellowship of the Ring",
+          "author": "J.R.R. Tolkien",
           "borrowed_date": "2025-01-05",
           "returned_date": "2025-02-10"
         }
       ],
-      "wish_list": [
+      "reservations": [
         {
           "book_id": 3,
-          "title": "Harry Potter and the Prisoner of Azkaban"
+          "title": "Harry Potter and the Prisoner of Azkaban",
+          "author": "J.K. Rowling",
+          "start_date": "2025-04-18",
+          "end_date": "2025-04-25"
         },
         {
           "book_id": 7,
-          "title": "Harry Potter and the Deathly Hallows"
+          "title": "Harry Potter and the Deathly Hallows",
+          "author": "J.K. Rowling",
+          "start_date": "2025-04-18",
+          "end_date": "2025-04-25"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 1741193000000,
+          "title": "The Odyssey",
+          "author": "Homer"
+        },
+        {
+          "book_id": 1741187000000,
+          "title": "Pride and Prejudice",
+          "author": "Jane Austen"
         }
       ],
       "membership_dues": {
@@ -71,23 +109,32 @@
       "name": "Ron Weasley",
       "active_books_checked_out": [
         {
-          "book_id": 6,
-          "title": "Harry Potter and the Half-Blood Prince",
-          "due_date": "2025-05-01"
+          "book_id": 1741191000000,
+          "title": "Brave New World",
+          "author": "Aldous Huxley",
+          "due_date": "2025-04-15"
         }
       ],
       "borrowing_history": [
         {
           "book_id": 3,
           "title": "Harry Potter and the Prisoner of Azkaban",
+          "author": "J.K. Rowling",
           "borrowed_date": "2025-01-15",
           "returned_date": "2025-02-01"
         }
       ],
+      "reservations": [],
       "wish_list": [
         {
           "book_id": 7,
-          "title": "Harry Potter and the Deathly Hallows"
+          "title": "Harry Potter and the Deathly Hallows",
+          "author": "J.K. Rowling"
+        },
+        {
+          "book_id": 1741192000000,
+          "title": "The Catcher in the Rye",
+          "author": "J.D. Salinger"
         }
       ],
       "membership_dues": {
@@ -108,14 +155,33 @@
         {
           "book_id": 1741189000000,
           "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
           "due_date": "2025-03-20"
         }
       ],
-      "borrowing_history": [],
-      "wish_list": [
+      "borrowing_history": [
+        {
+          "book_id": 2,
+          "title": "Harry Potter and the Chamber of Secrets",
+          "author": "J.K. Rowling",
+          "borrowed_date": "2025-01-15",
+          "returned_date": "2025-02-10"
+        }
+      ],
+      "reservations": [
         {
           "book_id": 1741186000000,
-          "title": "1984"
+          "title": "1984",
+          "author": "George Orwell",
+          "start_date": "2025-04-18",
+          "end_date": "2025-04-25"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 1741194000000,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
         }
       ],
       "membership_dues": {
@@ -132,19 +198,37 @@
     {
       "id": 1743196254872,
       "name": "Luna Lovegood",
-      "active_books_checked_out": [],
+      "active_books_checked_out": [
+        {
+          "book_id": 4,
+          "title": "Harry Potter and the Goblet of Fire",
+          "author": "J.K. Rowling",
+          "due_date": "2025-04-15"
+        }
+      ],
       "borrowing_history": [
         {
           "book_id": 2,
           "title": "Harry Potter and the Chamber of Secrets",
+          "author": "J.K. Rowling",
           "borrowed_date": "2025-02-10",
           "returned_date": "2025-02-28"
         }
       ],
-      "wish_list": [
+      "reservations": [
         {
           "book_id": 1741185000000,
-          "title": "To Kill a Mockingbird"
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "start_date": "2025-04-18",
+          "end_date": "2025-04-25"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 1741193000000,
+          "title": "The Odyssey",
+          "author": "Homer"
         }
       ],
       "membership_dues": {
@@ -165,11 +249,32 @@
         {
           "book_id": 1741190000000,
           "title": "Crime and Punishment",
+          "author": "Fyodor Dostoevsky",
           "due_date": "2025-03-22"
         }
       ],
-      "borrowing_history": [],
-      "wish_list": [],
+      "borrowing_history": [
+        {
+          "book_id": 5,
+          "title": "Harry Potter and the Order of the Phoenix",
+          "author": "J.K. Rowling",
+          "borrowed_date": "2025-02-01",
+          "returned_date": "2025-02-28"
+        }
+      ],
+      "reservations": [],
+      "wish_list": [
+        {
+          "book_id": 1741187000000,
+          "title": "Pride and Prejudice",
+          "author": "Jane Austen"
+        },
+        {
+          "book_id": 1741191000000,
+          "title": "Brave New World",
+          "author": "Aldous Huxley"
+        }
+      ],
       "membership_dues": {
         "amount": 15,
         "due_date": "2025-06-15"
@@ -184,19 +289,37 @@
     {
       "id": 1743198574125,
       "name": "Ginny Weasley",
-      "active_books_checked_out": [],
+      "active_books_checked_out": [
+        {
+          "book_id": 5,
+          "title": "Harry Potter and the Order of the Phoenix",
+          "author": "J.K. Rowling",
+          "due_date": "2025-04-20"
+        }
+      ],
       "borrowing_history": [
         {
           "book_id": 1741193000000,
           "title": "The Odyssey",
+          "author": "Homer",
           "borrowed_date": "2025-01-20",
           "returned_date": "2025-02-15"
         }
       ],
-      "wish_list": [
+      "reservations": [
         {
           "book_id": 1741195000000,
-          "title": "The Brothers Karamazov"
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoevsky",
+          "start_date": "2025-04-18",
+          "end_date": "2025-04-25"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 1741192000000,
+          "title": "The Catcher in the Rye",
+          "author": "J.D. Salinger"
         }
       ],
       "membership_dues": {
@@ -217,14 +340,33 @@
         {
           "book_id": 1741194000000,
           "title": "War and Peace",
+          "author": "Leo Tolstoy",
           "due_date": "2025-03-30"
         }
       ],
-      "borrowing_history": [],
-      "wish_list": [
+      "borrowing_history": [
+        {
+          "book_id": 1741191000000,
+          "title": "Brave New World",
+          "author": "Aldous Huxley",
+          "borrowed_date": "2025-02-10",
+          "returned_date": "2025-03-05"
+        }
+      ],
+      "reservations": [
         {
           "book_id": 1741188000000,
-          "title": "Moby Dick"
+          "title": "Moby Dick",
+          "author": "Herman Melville",
+          "start_date": "2025-04-18",
+          "end_date": "2025-04-25"
+        }
+      ],
+      "wish_list": [
+        {
+          "book_id": 1741189000000,
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald"
         }
       ],
       "membership_dues": {
@@ -241,9 +383,36 @@
     {
       "id": 1744939015800,
       "name": "a a",
-      "active_books_checked_out": [],
-      "borrowing_history": [],
-      "wish_list": [],
+      "active_books_checked_out": [
+        {
+          "book_id": 1741124834291,
+          "title": "The Hobbit",
+          "author": "J.R.R. Tolkien",
+          "due_date": "2025-04-25"
+        }
+      ],
+      "borrowing_history": [
+        {
+          "book_id": 1741187000000,
+          "title": "Pride and Prejudice",
+          "author": "Jane Austen",
+          "borrowed_date": "2025-02-15",
+          "returned_date": "2025-03-10"
+        }
+      ],
+      "reservations": [],
+      "wish_list": [
+        {
+          "book_id": 1741192000000,
+          "title": "The Catcher in the Rye",
+          "author": "J.D. Salinger"
+        },
+        {
+          "book_id": 1741193000000,
+          "title": "The Odyssey",
+          "author": "Homer"
+        }
+      ],
       "membership_dues": {
         "amount": 5,
         "due_date": "2025-05-18"
@@ -259,9 +428,36 @@
     {
       "id": 1744939119228,
       "name": "b b",
-      "active_books_checked_out": [],
-      "borrowing_history": [],
-      "wish_list": [],
+      "active_books_checked_out": [
+        {
+          "book_id": 1741158173593,
+          "title": "The Lord of the Rings: The Return of the King",
+          "author": "J.R.R. Tolkien",
+          "due_date": "2025-04-30"
+        }
+      ],
+      "borrowing_history": [
+        {
+          "book_id": 4,
+          "title": "Harry Potter and the Goblet of Fire",
+          "author": "J.K. Rowling",
+          "borrowed_date": "2025-01-20",
+          "returned_date": "2025-02-20"
+        }
+      ],
+      "reservations": [],
+      "wish_list": [
+        {
+          "book_id": 6,
+          "title": "Harry Potter and the Half-Blood Prince",
+          "author": "J.K. Rowling"
+        },
+        {
+          "book_id": 1741191000000,
+          "title": "Brave New World",
+          "author": "Aldous Huxley"
+        }
+      ],
       "membership_dues": {
         "amount": 5,
         "due_date": "2025-05-18"

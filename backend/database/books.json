@@ -6,8 +6,8 @@
       "author": "J.K. Rowling",
       "checked_out": true,
       "borrower": {
-        "name": "John Smith",
-        "due_date": "2025-03-10"
+        "name": "Harry Potter",
+        "due_date": "2025-04-10"
       },
       "reservation": null
     },
@@ -17,10 +17,7 @@
       "author": "J.K. Rowling",
       "checked_out": false,
       "borrower": null,
-      "reservation": {
-        "start_date": "2025-03-01",
-        "end_date": "2025-03-08"
-      }
+      "reservation": null
     },
     {
       "id": 3,
@@ -28,30 +25,44 @@
       "author": "J.K. Rowling",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-18",
+        "end_date": "2025-04-25",
+        "name": "Hermione Granger",
+        "user_id": 2
+      }
     },
     {
       "id": 4,
       "title": "Harry Potter and the Goblet of Fire",
       "author": "J.K. Rowling",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "Luna Lovegood",
+        "due_date": "2025-04-15"
+      },
       "reservation": null
     },
     {
       "id": 5,
       "title": "Harry Potter and the Order of the Phoenix",
       "author": "J.K. Rowling",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "Ginny Weasley",
+        "due_date": "2025-04-20"
+      },
       "reservation": null
     },
     {
       "id": 6,
       "title": "Harry Potter and the Half-Blood Prince",
       "author": "J.K. Rowling",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "Hermione Granger",
+        "due_date": "2025-03-15"
+      },
       "reservation": null
     },
     {
@@ -60,14 +71,22 @@
       "author": "J.K. Rowling",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-18",
+        "end_date": "2025-04-25",
+        "name": "Hermione Granger",
+        "user_id": 2
+      }
     },
     {
       "id": 1741124834291,
       "title": "The Hobbit",
       "author": "J.R.R. Tolkien",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "a a",
+        "due_date": "2025-04-25"
+      },
       "reservation": null
     },
     {
@@ -82,16 +101,22 @@
       "id": 1741158159533,
       "title": "The Lord of the Rings: The Two Towers",
       "author": "J.R.R. Tolkien",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "Hermione Granger",
+        "due_date": "2025-03-20"
+      },
       "reservation": null
     },
     {
       "id": 1741158173593,
       "title": "The Lord of the Rings: The Return of the King",
       "author": "J.R.R. Tolkien",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "b b",
+        "due_date": "2025-04-30"
+      },
       "reservation": null
     },
     {
@@ -100,7 +125,12 @@
       "author": "Harper Lee",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-18",
+        "end_date": "2025-04-25",
+        "name": "Luna Lovegood",
+        "user_id": 1743196254872
+      }
     },
     {
       "id": 1741186000000,
@@ -108,17 +138,19 @@
       "author": "George Orwell",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-18",
+        "end_date": "2025-04-25",
+        "name": "Draco Malfoy",
+        "user_id": 1743195127845
+      }
     },
     {
       "id": 1741187000000,
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
-      "checked_out": true,
-      "borrower": {
-        "name": "Alice Johnson",
-        "due_date": "2025-03-15"
-      },
+      "checked_out": false,
+      "borrower": null,
       "reservation": null
     },
     {
@@ -127,30 +159,44 @@
       "author": "Herman Melville",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-18",
+        "end_date": "2025-04-25",
+        "name": "Severus Snape",
+        "user_id": 1743199652187
+      }
     },
     {
       "id": 1741189000000,
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "Draco Malfoy",
+        "due_date": "2025-03-20"
+      },
       "reservation": null
     },
     {
       "id": 1741190000000,
       "title": "Crime and Punishment",
       "author": "Fyodor Dostoevsky",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "Neville Longbottom",
+        "due_date": "2025-03-22"
+      },
       "reservation": null
     },
     {
       "id": 1741191000000,
       "title": "Brave New World",
       "author": "Aldous Huxley",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true, 
+      "borrower": {
+        "name": "Ron Weasley",
+        "due_date": "2025-04-15"
+      },
       "reservation": null
     },
     {
@@ -173,8 +219,11 @@
       "id": 1741194000000,
       "title": "War and Peace",
       "author": "Leo Tolstoy",
-      "checked_out": false,
-      "borrower": null,
+      "checked_out": true,
+      "borrower": {
+        "name": "Severus Snape",
+        "due_date": "2025-03-30"
+      },
       "reservation": null
     },
     {
@@ -183,7 +232,12 @@
       "author": "Fyodor Dostoevsky",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-18",
+        "end_date": "2025-04-25",
+        "name": "Ginny Weasley",
+        "user_id": 1743198574125
+      }
     }
   ]
 }
