@@ -46,10 +46,39 @@ const LoginSignUp = () => {
     e.preventDefault();
     
     if (isSignIn) {
-      // Handle login (not implemented yet)
-      console.log('Login attempted with:', { username, password });
-      // Placeholder redirect
-      navigate('#');
+      // Handle login
+      try {
+        const response = await fetch('http://localhost:3000/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          // Store token in localStorage
+          localStorage.setItem('token', data.token);
+          
+          // Decode the JWT to get user info (without verification)
+          const payload = JSON.parse(atob(data.token.split('.')[1]));
+          const isAdmin = payload.administrator;
+          
+          // Redirect based on user role
+          if (isAdmin) {
+            navigate('/admin/dashboard');
+          } else {
+            navigate('/dashboard');
+          }
+        } else {
+          const errorData = await response.json();
+          setError(errorData.message || 'Login failed. Please check your credentials.');
+        }
+      } catch (error) {
+        console.error('Error during login:', error);
+        setError('An error occurred during login. Please try again.');
+      }
     } else {
       // Handle sign-up
       // Validate passwords match
@@ -89,8 +118,24 @@ const LoginSignUp = () => {
         
         if (response.ok) {
           console.log('User created successfully!');
-          // Placeholder redirect after successful sign-up
-          navigate('#');
+          // After successful signup, log in the user automatically
+          const loginResponse = await fetch('http://localhost:3000/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+          });
+          
+          if (loginResponse.ok) {
+            const data = await loginResponse.json();
+            localStorage.setItem('token', data.token);
+            navigate('/dashboard');
+          } else {
+            // If auto-login fails, redirect to login page
+            setIsSignIn(true);
+            setError('Account created! Please log in.');
+          }
         } else {
           const errorData = await response.json();
           setError(errorData.message || 'Failed to create user');

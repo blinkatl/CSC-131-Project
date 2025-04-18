@@ -11,9 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+// API routes
 app.use("/books", booksRouter);     // Sets api /books endpoint
 app.use("/users", usersRouter);     // Sets api /users endpoint
-app.use("/", authRouter);        // Sets api /login endpoint
+app.use("/auth", authRouter);       // Sets api /auth endpoint
 
 // Test route to quickly see if server is running
 app.get("/", (req, res) => {

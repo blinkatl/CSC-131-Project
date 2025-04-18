@@ -237,6 +237,42 @@
       "username": "SeverusS",
       "password": "potionsmaster",
       "administrator": true
+    },
+    {
+      "id": 1744939015800,
+      "name": "a a",
+      "active_books_checked_out": [],
+      "borrowing_history": [],
+      "wish_list": [],
+      "membership_dues": {
+        "amount": 5,
+        "due_date": "2025-05-18"
+      },
+      "fees": {
+        "overdue_fines": 0,
+        "new_user_fee": 5
+      },
+      "username": "a",
+      "password": "a",
+      "administrator": true
+    },
+    {
+      "id": 1744939119228,
+      "name": "b b",
+      "active_books_checked_out": [],
+      "borrowing_history": [],
+      "wish_list": [],
+      "membership_dues": {
+        "amount": 5,
+        "due_date": "2025-05-18"
+      },
+      "fees": {
+        "overdue_fines": 0,
+        "new_user_fee": 5
+      },
+      "username": "b",
+      "password": "b",
+      "administrator": false
     }
   ]
 }

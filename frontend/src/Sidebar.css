@@ -91,3 +91,21 @@
   background-color: #424549;
   border-radius: 5px;
 }
+
+.logout-link {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+.logout-link:hover {
+  background-color: #424549;
+  border-radius: 5px;
+}

@@ -8,8 +8,10 @@ import Sidebar from './Sidebar';
 import Books from "./Books";
 import Users from './Users';
 import Dashboard from './Dashboard';
+import UserDashboard from './UserDashboard'; 
 import Footer from './Footer';
 import LoginSignUp from './LoginSignUp';
+import { ProtectedRoute, AdminRoute } from './ProtectedRoute';
 
 const MainLayout = ({ children }) => (
   <div className="main-content">
@@ -34,6 +36,7 @@ function App() {
     <Router>
       <div className='app-container'>
         <Routes>
+          {/* Public routes */}
           <Route path="/login" element={
             <FullScreenLayout>
               <LoginSignUp />
@@ -59,21 +62,34 @@ function App() {
               <Contact />
             </MainLayout>
           } />
-          <Route path="/admin/dashboard" element={
-            <MainLayout>
-              <Dashboard />
-            </MainLayout>
-          } />
-          <Route path="/admin/books" element={
-            <MainLayout>
-              <Books />
-            </MainLayout>
-          } />
-          <Route path="/admin/users" element={
-            <MainLayout>
-              <Users />
-            </MainLayout>
-          } />
+          
+          {/* User protected routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={
+              <MainLayout>
+                <UserDashboard />
+              </MainLayout>
+            } />
+          </Route>
+          
+          {/* Admin protected routes */}
+          <Route element={<AdminRoute />}>
+            <Route path="/admin/dashboard" element={
+              <MainLayout>
+                <Dashboard />
+              </MainLayout>
+            } />
+            <Route path="/admin/books" element={
+              <MainLayout>
+                <Books />
+              </MainLayout>
+            } />
+            <Route path="/admin/users" element={
+              <MainLayout>
+                <Users />
+              </MainLayout>
+            } />
+          </Route>
         </Routes>
       </div>
     </Router>
