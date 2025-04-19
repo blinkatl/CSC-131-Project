@@ -13,6 +13,7 @@ import UserBooks from './UserBooks';
 import Footer from './Footer';
 import LoginSignUp from './LoginSignUp';
 import { ProtectedRoute, AdminRoute } from './ProtectedRoute';
+import UserMembership from './UserMembership';
 
 const MainLayout = ({ children }) => (
   <div className="main-content">
@@ -74,6 +75,11 @@ function App() {
             <Route path="/books" element={
               <MainLayout>
                 <UserBooks />
+              </MainLayout>
+            } />
+            <Route path="/membership" element={
+              <MainLayout>
+                <UserMembership />
               </MainLayout>
             } />
           </Route>
