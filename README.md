@@ -1,11 +1,24 @@
 # CSC-131-Project
 
-1. In the terminal, cd into backend folder and run "npm run dev" to locally host backend
-2. In the terminal, cd into frontend folder and run "npm run dev" to locally host frontend
-3. After you run the frontend, it will tell you which port the frontend is running on, (http://localhost:xxxx/). Go to that link to run the site.
+1. To download, either clone the repository from [Github](https://github.com/blinkatl/CSC-131-Project) OR download as a ZIP file.
+2. Open the terminal and ```cd``` into the extracted project folder. To install dependencies for both backend and frontend, type in the terminal:
+```cd backend```
 
-Frontend: code belongs in /src folder, logos/pictures go in /public or /src/assets folder accordingly.
+```npm install```
 
-Backend: code goes in /controllers and /routes. database files go in /database (i didnt make all database files needed yet)
+```cd ../backend```
 
-DONT FORGET TO BRANCH
+```npm install```
+
+3. To start the backend and type in the terminal:
+```cd backend```
+
+```npm run dev```
+
+Open a new terminal and type:
+
+```cd frontend```
+
+```npm run dev```
+
+4. After starting the frontend, the output will look like "Local: http://localhost:5173/", which you can click on the link.
