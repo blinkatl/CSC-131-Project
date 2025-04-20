@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './UserBooks.css';
 
 function UserBooks() {
@@ -7,15 +6,33 @@ function UserBooks() {
     name: '',
     active_books_checked_out: [],
     borrowing_history: [],
-    wish_list: []
+    wish_list: [],
+    reservations: []
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [actionStatus, setActionStatus] = useState({ type: '', message: '', success: false });
+  
+  // Search-related state
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [showBookActions, setShowBookActions] = useState(false);
 
   useEffect(() => {
     fetchUserData();
   }, []);
+
+  // Effect for search functionality
+  useEffect(() => {
+    if (searchTerm.trim().length > 2) {
+      searchBooks(searchTerm);
+    } else {
+      setSearchResults([]);
+      setShowDropdown(false);
+    }
+  }, [searchTerm]);
 
   const fetchUserData = async () => {
     setIsLoading(true);
@@ -49,6 +66,44 @@ function UserBooks() {
     }
   };
 
+  // Search books function
+  const searchBooks = async (query) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`http://localhost:3000/books`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch books');
+      }
+
+      const allBooks = await response.json();
+      
+      // Filter books by title or author
+      const filteredBooks = allBooks.filter(book => 
+        book.title.toLowerCase().includes(query.toLowerCase()) || 
+        book.author.toLowerCase().includes(query.toLowerCase())
+      );
+      
+      setSearchResults(filteredBooks);
+      setShowDropdown(true);
+    } catch (err) {
+      console.error("Error searching books:", err);
+      setSearchResults([]);
+    }
+  };
+
+  // Handle book selection from search results
+  const handleSelectBook = (book) => {
+    setSelectedBook(book);
+    setShowBookActions(true);
+    setShowDropdown(false);
+    setSearchTerm(book.title);
+  };
+
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
@@ -77,35 +132,54 @@ function UserBooks() {
 
   // Get earliest available date for reservation
   const getEarliestAvailableDate = async (bookId) => {
-    try {
-      const response = await fetch(`http://localhost:3000/books/${bookId}`, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch book information');
+  try {
+    const response = await fetch(`http://localhost:3000/books/${bookId}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
+    });
 
-      const bookData = await response.json();
-      
-      // If book is not checked out, it's available tomorrow
-      if (!bookData.checked_out) {
+    if (!response.ok) {
+      throw new Error('Failed to fetch book information');
+    }
+
+    const bookData = await response.json();
+
+    let latestDate = null;
+
+    // Start by checking existing reservations
+    if (bookData.reservations && Array.isArray(bookData.reservations)) {
+      const sortedReservations = [...bookData.reservations]
+        .filter(r => r.end_date)
+        .sort((a, b) => new Date(a.end_date) - new Date(b.end_date));
+
+      if (sortedReservations.length > 0) {
+        const lastEndDate = new Date(sortedReservations[sortedReservations.length - 1].end_date);
+        lastEndDate.setDate(lastEndDate.getDate() + 1);
+        latestDate = lastEndDate;
+      }
+    }
+
+    // If no reservations, fallback to due date or tomorrow
+    if (!latestDate) {
+      if (bookData.checked_out && bookData.borrower?.due_date) {
+        const dueDateObj = new Date(bookData.borrower.due_date);
+        dueDateObj.setDate(dueDateObj.getDate() + 1);
+        latestDate = dueDateObj;
+      } else {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
-        return tomorrow.toISOString().split('T')[0];
+        latestDate = tomorrow;
       }
-      
-      // If book is checked out, it's available the day after due date
-      const dueDateObj = new Date(bookData.borrower.due_date);
-      dueDateObj.setDate(dueDateObj.getDate() + 1);
-      return dueDateObj.toISOString().split('T')[0];
-    } catch (error) {
-      console.error("Error getting earliest available date:", error);
-      return null;
     }
-  };
+
+    return latestDate.toISOString().split('T')[0];
+  } catch (error) {
+    console.error("Error getting earliest available date:", error);
+    return null;
+  }
+};
+
 
   // Handle renew button click
   const handleRenew = async (bookId, dueDate) => {
@@ -166,6 +240,10 @@ function UserBooks() {
         success: true
       });
       
+      // Reset selected book
+      setSelectedBook(null);
+      setShowBookActions(false);
+      
       // Clear status message after 5 seconds
       setTimeout(() => setActionStatus({ type: '', message: '', success: false }), 5000);
     } catch (error) {
@@ -178,8 +256,78 @@ function UserBooks() {
     }
   };
 
+  // Add book to wishlist
+  const handleAddToWishlist = async (book) => {
+    try {
+      const token = localStorage.getItem('token');
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const userId = payload.id;
+      
+      // Check if book is already in wishlist
+      const isInWishlist = userData.wish_list.some(item => item.book_id === book.id);
+      
+      if (isInWishlist) {
+        setActionStatus({
+          type: 'add-wishlist',
+          message: 'Book is already in your wishlist.',
+          success: false
+        });
+        return;
+      }
+      
+      // Create wishlist item
+      const wishlistItem = {
+        book_id: book.id,
+        title: book.title,
+        author: book.author
+      };
+      
+      // Add to user's wishlist
+      const updatedWishlist = [...userData.wish_list, wishlistItem];
+      
+      const response = await fetch(`http://localhost:3000/users/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          id: parseInt(userId),
+          wish_list: updatedWishlist
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to add book to wishlist');
+      }
+      
+      // Update user data to reflect changes
+      await fetchUserData();
+      
+      setActionStatus({
+        type: 'add-wishlist',
+        message: 'Book added to wishlist successfully!',
+        success: true
+      });
+      
+      // Reset selected book
+      setSelectedBook(null);
+      setShowBookActions(false);
+      
+      // Clear status message after 5 seconds
+      setTimeout(() => setActionStatus({ type: '', message: '', success: false }), 5000);
+    } catch (error) {
+      console.error("Error adding book to wishlist:", error);
+      setActionStatus({
+        type: 'add-wishlist',
+        message: 'Error adding book to wishlist: ' + error.message,
+        success: false
+      });
+    }
+  };
+
   // Handle reserve button click (both wishlist and borrowing history)
-  const handleReserve = async (bookId, source) => {
+  const handleReserve = async (bookId, source = 'search') => {
     try {
       const token = localStorage.getItem('token');
       const payload = JSON.parse(atob(token.split('.')[1]));
@@ -272,17 +420,21 @@ function UserBooks() {
       await fetchUserData();
       
       setActionStatus({
-        type: source === 'wishlist' ? 'reserve-wishlist' : 'borrow-again',
+        type: source === 'wishlist' ? 'reserve-wishlist' : 'reserve',
         message: `Book reserved successfully! Available from ${formatDate(startDate)} to ${formatDate(endDate)}`,
         success: true
       });
+      
+      // Reset selected book
+      setSelectedBook(null);
+      setShowBookActions(false);
       
       // Clear status message after 5 seconds
       setTimeout(() => setActionStatus({ type: '', message: '', success: false }), 5000);
     } catch (error) {
       console.error("Error reserving book:", error);
       setActionStatus({
-        type: source === 'wishlist' ? 'reserve-wishlist' : 'borrow-again',
+        type: 'reserve',
         message: 'Error reserving book: ' + error.message,
         success: false
       });
@@ -337,16 +489,125 @@ function UserBooks() {
     }
   };
 
+  // Handle canceling a reservation
+  const handleCancelReservation = async (bookId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const userId = payload.id;
+      
+      // First, update the book to remove the reservation
+      const bookResponse = await fetch(`http://localhost:3000/books/${bookId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          id: parseInt(bookId),
+          reservation: null
+        })
+      });
+      
+      if (!bookResponse.ok) {
+        throw new Error('Failed to cancel book reservation');
+      }
+      
+      // Then, remove the reservation from the user's reservations list
+      const updatedReservations = userData.reservations.filter(reservation => reservation.book_id !== bookId);
+      
+      const userResponse = await fetch(`http://localhost:3000/users/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          id: parseInt(userId),
+          reservations: updatedReservations
+        })
+      });
+      
+      if (!userResponse.ok) {
+        throw new Error('Failed to update user reservations');
+      }
+      
+      // Update user data to reflect changes
+      await fetchUserData();
+      
+      setActionStatus({
+        type: 'cancel-reservation',
+        message: 'Reservation canceled successfully!',
+        success: true
+      });
+      
+      // Clear status message after 5 seconds
+      setTimeout(() => setActionStatus({ type: '', message: '', success: false }), 5000);
+    } catch (error) {
+      console.error("Error canceling reservation:", error);
+      setActionStatus({
+        type: 'cancel-reservation',
+        message: 'Error canceling reservation: ' + error.message,
+        success: false
+      });
+    }
+  };
+
   // Check if book is already reserved by this user
   const isBookReservedByUser = (bookId) => {
     if (!userData.reservations) return false;
     return userData.reservations.some(reservation => reservation.book_id === bookId);
   };
 
-  // Get reservation details for a book reserved by this user
+  // Check if book is in user's wishlist
+  const isBookInWishlist = (bookId) => {
+    if (!userData.wish_list) return false;
+    return userData.wish_list.some(book => book.book_id === bookId);
+  };
+
+  // Check if book is already checked out by this user
+  const isBookCheckedOutByUser = (bookId) => {
+    if (!userData.active_books_checked_out) return false;
+    return userData.active_books_checked_out.some(book => book.book_id === bookId);
+  };
+
+  // Get user reservation for a book
   const getUserReservationForBook = (bookId) => {
     if (!userData.reservations) return null;
     return userData.reservations.find(reservation => reservation.book_id === bookId);
+  };
+
+  // Get checked out book details by id
+  const getCheckedOutBookDetails = (bookId) => {
+    if (!userData.active_books_checked_out) return null;
+    return userData.active_books_checked_out.find(book => book.book_id === bookId);
+  };
+
+  // Calculate days until reservation starts
+  const calculateDaysUntilReservation = (startDate) => {
+    const today = new Date();
+    const start = new Date(startDate);
+    const diffTime = start - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  };
+
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    if (e.target.value.trim() === '') {
+      setShowDropdown(false);
+      setSelectedBook(null);
+      setShowBookActions(false);
+    }
+  };
+
+  // Clear search and selected book
+  const handleClearSearch = () => {
+    setSearchTerm('');
+    setSelectedBook(null);
+    setShowBookActions(false);
+    setShowDropdown(false);
   };
 
   if (isLoading) {
@@ -360,6 +621,100 @@ function UserBooks() {
   return (
     <div className="user-books-container">
       <h1 className="page-title">My Books</h1>
+
+      {/* Search Bar */}
+      <div className="search-container">
+        <div className="search-input-group">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search for books by title or author..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            onFocus={() => searchTerm.trim().length > 2 && setShowDropdown(true)}
+          />
+          {searchTerm && (
+            <button className="search-clear-btn" onClick={handleClearSearch}>
+              ×
+            </button>
+          )}
+        </div>
+        
+        {/* Search Results Dropdown */}
+        {showDropdown && searchResults.length > 0 && (
+          <div className="search-dropdown">
+            {searchResults.map(book => (
+              <div 
+                key={book.id} 
+                className="search-result-item"
+                onClick={() => handleSelectBook(book)}
+              >
+                <span className="search-result-title">{book.title}</span>
+                <span className="search-result-author">by {book.author}</span>
+              </div>
+            ))}
+          </div>
+        )}
+        
+        {/* No Results Message */}
+        {showDropdown && searchTerm.trim().length > 2 && searchResults.length === 0 && (
+          <div className="search-dropdown">
+            <div className="search-no-results">No books found</div>
+          </div>
+        )}
+      </div>
+
+      {/* Selected Book Actions */}
+      {showBookActions && selectedBook && (
+        <div className="selected-book-actions">
+          <div className="selected-book-info">
+            <h3>{selectedBook.title}</h3>
+            <p className="selected-book-author">by {selectedBook.author}</p>
+            <p className="selected-book-status">
+              Status: {selectedBook.checked_out ? 'Currently Checked Out' : 'Available'}
+            </p>
+          </div>
+          <div className="selected-book-buttons">
+            {!isBookInWishlist(selectedBook.id) && (
+              <button 
+                className="btn btn-secondary"
+                onClick={() => handleAddToWishlist(selectedBook)}
+              >
+                Add to Wishlist
+              </button>
+            )}
+            
+            {!isBookReservedByUser(selectedBook.id) && !isBookCheckedOutByUser(selectedBook.id) && (
+              <button 
+                className="btn btn-primary"
+                onClick={() => handleReserve(selectedBook.id)}
+              >
+                Reserve
+              </button>
+            )}
+            
+            {isBookCheckedOutByUser(selectedBook.id) && (
+              <button 
+                className="btn btn-success"
+                onClick={() => {
+                  const bookDetails = getCheckedOutBookDetails(selectedBook.id);
+                  if (bookDetails) {
+                    handleRenew(selectedBook.id, bookDetails.due_date);
+                  }
+                }}
+              >
+                Renew
+              </button>
+            )}
+            
+            {isBookReservedByUser(selectedBook.id) && (
+              <div className="reservation-tag">
+                Reserved: {formatDate(getUserReservationForBook(selectedBook.id)?.start_date)}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Status Messages */}
       {actionStatus.message && (
@@ -410,6 +765,69 @@ function UserBooks() {
           </div>
         ) : (
           <p className="empty-message">You don't have any books checked out currently.</p>
+        )}
+      </div>
+
+      {/* My Reservations Section */}
+      <div className="books-section">
+        <h2 className="section-title">My Reservations</h2>
+        {userData.reservations && userData.reservations.length > 0 ? (
+          <div className="card-container">
+            {userData.reservations.map(reservation => {
+              const daysUntilStart = calculateDaysUntilReservation(reservation.start_date);
+              let statusText = "";
+              let statusClass = "status-normal";
+              
+              if (daysUntilStart > 0) {
+                statusText = `Available in ${daysUntilStart} days`;
+              } else if (daysUntilStart === 0) {
+                statusText = "Available today!";
+                statusClass = "status-warning";
+              } else {
+                const endDate = new Date(reservation.end_date);
+                const today = new Date();
+                if (today <= endDate) {
+                  statusText = "Available now!";
+                  statusClass = "status-warning";
+                } else {
+                  statusText = "Reservation expired";
+                  statusClass = "status-overdue";
+                }
+              }
+              
+              return (
+                <div key={reservation.book_id} className="book-card">
+                  <div className="book-header">
+                    <h3 className="book-title">{reservation.title}</h3>
+                  </div>
+                  <div className="book-details">
+                    <p><span className="detail-label">Author:</span> {reservation.author}</p>
+                    <p>
+                      <span className="detail-label">Available from:</span> 
+                      {formatDate(reservation.start_date)}
+                    </p>
+                    <p>
+                      <span className="detail-label">Reserved until:</span> 
+                      {formatDate(reservation.end_date)}
+                    </p>
+                    <p className={statusClass}>
+                      <span className="detail-label">Status:</span> {statusText}
+                    </p>
+                  </div>
+                  <div className="book-actions">
+                    <button 
+                      className="btn btn-outline"
+                      onClick={() => handleCancelReservation(reservation.book_id)}
+                    >
+                      Cancel Reservation
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="empty-message">You don't have any reservations.</p>
         )}
       </div>
 

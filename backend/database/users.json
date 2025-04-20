@@ -414,6 +414,13 @@
           "author": "Jane Austen",
           "start_date": "2025-04-19",
           "end_date": "2025-04-26"
+        },
+        {
+          "book_id": 1741158081333,
+          "title": "The Lord of the Rings: The Fellowship of the Ring",
+          "author": "J.R.R. Tolkien",
+          "start_date": "2025-04-21",
+          "end_date": "2025-04-28"
         }
       ],
       "wish_list": [
@@ -426,6 +433,11 @@
           "book_id": 1741193000000,
           "title": "The Odyssey",
           "author": "Homer"
+        },
+        {
+          "book_id": 1741158081333,
+          "title": "The Lord of the Rings: The Fellowship of the Ring",
+          "author": "J.R.R. Tolkien"
         }
       ],
       "membership_dues": {
@@ -460,7 +472,15 @@
           "returned_date": "2025-02-20"
         }
       ],
-      "reservations": [],
+      "reservations": [
+        {
+          "book_id": 1741158081333,
+          "title": "The Lord of the Rings: The Fellowship of the Ring",
+          "author": "J.R.R. Tolkien",
+          "start_date": "2025-04-21",
+          "end_date": "2025-04-28"
+        }
+      ],
       "wish_list": [
         {
           "book_id": 6,

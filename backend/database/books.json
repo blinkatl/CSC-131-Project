@@ -95,7 +95,12 @@
       "author": "J.R.R. Tolkien",
       "checked_out": false,
       "borrower": null,
-      "reservation": null
+      "reservation": {
+        "start_date": "2025-04-21",
+        "end_date": "2025-04-28",
+        "name": "a a",
+        "user_id": 1744939015800
+      }
     },
     {
       "id": 1741158159533,
