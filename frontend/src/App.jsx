@@ -44,7 +44,7 @@ function App() {
               <LoginSignUp />
             </FullScreenLayout>
           } />
-          <Route path="/" element={
+          <Route path="/home" element={
             <FullScreenLayout>
               <Home />
             </FullScreenLayout>

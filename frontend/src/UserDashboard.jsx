@@ -295,7 +295,7 @@ function UserDashboard() {
             )}
           </div>
           <div className="card-footer">
-            <Link to="/search" className="action-button">Borrow Books</Link>
+            <Link to="/books" className="action-button">Borrow Books</Link>
           </div>
         </div>
 
@@ -365,7 +365,7 @@ function UserDashboard() {
             )}
           </div>
           <div className="card-footer">
-            <Link to="/search" className="action-button">Add to Wishlist</Link>
+            <Link to="/books" className="action-button">Add to Wishlist</Link>
           </div>
         </div>
 
@@ -395,7 +395,7 @@ function UserDashboard() {
             )}
           </div>
           <div className="card-footer">
-            <Link to="/search" className="action-button">Reserve Books</Link>
+            <Link to="/books" className="action-button">Reserve Books</Link>
           </div>
         </div>
 
