@@ -1,0 +1,65 @@
+/* settings.css */
+:root {
+    --font-size-base: 16px;
+    --font-size-heading: 24px;
+    --font-size-small: 14px;
+    --bg-color: #3b3b3b;
+    --text-color: #000000;
+    --accent-color: #007bff;
+  }
+  
+  .high-contrast {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --accent-color: #ffff00;
+  }
+  
+  body {
+    font-size: var(--font-size-base);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .settings-panel {
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 1rem auto;
+    font-size: var(--font-size-base);
+  }
+  
+  .setting-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .setting-group h4 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .settings-panel button {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+  }
+  
+  .settings-panel ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .settings-panel li {
+    margin-bottom: 0.3rem;
+  }
+  
+  button:focus {
+    outline: 3px solid var(--accent-color);
+  }
+  

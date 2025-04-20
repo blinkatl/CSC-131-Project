@@ -81,7 +81,7 @@
   gap: 10px;
 }
 
-.logout-link {
+.logout-link, .settings-link {
   color: white;
   text-decoration: none;
   font-size: 18px;
@@ -90,7 +90,7 @@
   padding: 10px;
 }
 
-.logout-link:hover {
+.logout-link:hover, .settings-link:hover {
   background-color: #424549;
   border-radius: 5px;
 }
@@ -108,9 +108,18 @@
   text-align: left;
 }
 
-.logout-link:hover {
-  background-color: #424549;
-  border-radius: 5px;
+.settings-link {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
 }
 
 .view-toggle-btn {

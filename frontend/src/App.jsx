@@ -14,6 +14,7 @@ import Footer from './Footer';
 import LoginSignUp from './LoginSignUp';
 import { ProtectedRoute, AdminRoute } from './ProtectedRoute';
 import UserMembership from './UserMembership';
+import Settings from './Settings';
 
 const MainLayout = ({ children }) => (
   <div className="main-content">
@@ -64,6 +65,11 @@ function App() {
               <Contact />
             </MainLayout>
           } />
+          <Route path="/settings" element={
+            <MainLayout>
+              <Settings />
+            </MainLayout>
+          } />
           
           {/* User protected routes */}
           <Route element={<ProtectedRoute />}>
@@ -83,6 +89,7 @@ function App() {
               </MainLayout>
             } />
           </Route>
+          
           
           {/* Admin protected routes */}
           <Route element={<AdminRoute />}>
