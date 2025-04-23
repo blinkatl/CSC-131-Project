@@ -7,6 +7,7 @@ function Dashboard() {
   const [userCount, setUserCount] = useState(0);
   const [bookCount, setBookCount] = useState(0);
   const [membershipFees, setMembershipFees] = useState(0);
+  const [sendingEmail, setSendingEmail] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3000/users')
@@ -39,6 +40,37 @@ function Dashboard() {
 
   const handleFeesMoreInfo = () => {
     navigate('/admin/users');
+  };
+
+  const sendDueDateReminders = () => {
+    setSendingEmail(true);
+    fetch('http://localhost:3000/email/send-due-date-reminders', {
+      method: 'POST',
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Log the preview URLs to the console
+        console.log('Reminder emails sent:', data);
+        if (data.emailPreviews) {
+          console.log('Email previews:');
+          data.emailPreviews.forEach(preview => {
+            console.log(`Email to ${preview.user} (${preview.email}): ${preview.previewUrl}`);
+          });
+        }
+        alert('Due date reminder emails sent successfully!');
+      })
+      .catch(error => {
+        console.error('Error sending reminder emails:', error);
+        alert('Failed to send reminder emails. Please try again.');
+      })
+      .finally(() => {
+        setSendingEmail(false);
+      });
   };
 
   return (
@@ -84,6 +116,13 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      <button 
+        className="reminder-button" 
+        onClick={sendDueDateReminders}
+        disabled={sendingEmail}
+      >
+        {sendingEmail ? 'Sending...' : 'Send due date reminder email'}
+      </button>
     </div>
   );
 }
