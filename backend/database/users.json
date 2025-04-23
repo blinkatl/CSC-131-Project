@@ -37,6 +37,7 @@
       },
       "username": "HarryP",
       "password": "password",
+      "email": "harrypotter@testemail.com",
       "administrator": true
     },
     {
@@ -102,6 +103,7 @@
       },
       "username": "HermioneG",
       "password": "securepassword",
+      "email": "hermionegranger@testemail.com",
       "administrator": false
     },
     {
@@ -146,6 +148,7 @@
       },
       "username": "RonW",
       "password": "test",
+      "email": "ronweasley@testemail.com",
       "administrator": false
     },
     {
@@ -193,6 +196,7 @@
       },
       "username": "DracoM",
       "password": "malfoy123",
+      "email": "dracomalfoy@testemail.com",
       "administrator": false
     },
     {
@@ -240,6 +244,7 @@
       },
       "username": "LunaL",
       "password": "loony456",
+      "email": "lunalovegood@testemail.com",
       "administrator": false
     },
     {
@@ -284,6 +289,7 @@
       },
       "username": "NevilleL",
       "password": "nevillepass",
+      "email": "nevillelongbottom@testemail.com",
       "administrator": false
     },
     {
@@ -331,6 +337,7 @@
       },
       "username": "GinnyW",
       "password": "ginny789",
+      "email": "ginnyweasley@testemail.com",
       "administrator": false
     },
     {
@@ -378,6 +385,7 @@
       },
       "username": "SeverusS",
       "password": "potionsmaster",
+      "email": "severussnape@testemail.com",
       "administrator": true
     },
     {
@@ -450,6 +458,7 @@
       },
       "username": "a",
       "password": "a",
+      "email": "aa@testemail.com",
       "administrator": true
     },
     {
@@ -503,6 +512,7 @@
       },
       "username": "b",
       "password": "b",
+      "email": "bbtest@testemail.com",
       "administrator": false
     }
   ]

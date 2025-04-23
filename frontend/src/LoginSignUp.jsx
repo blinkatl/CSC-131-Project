@@ -5,6 +5,7 @@ import './LoginSignUp.css';
 const LoginSignUp = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -98,6 +99,7 @@ const LoginSignUp = () => {
       const newUser = {
         name: `${firstName} ${lastName}`,
         username,
+        email,
         password,
         administrator: false,
         active_books_checked_out: null,
@@ -213,6 +215,18 @@ const LoginSignUp = () => {
               required 
             />
           </div>
+          {!isSignIn && (
+            <div className="form-group">
+              <input 
+                type="email" 
+                id="email" 
+                placeholder="Email Address" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required 
+              />
+            </div>
+          )}
           <div className="form-group">
             <input 
               type="password" 

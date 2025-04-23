@@ -38,14 +38,21 @@
   margin-bottom: 10px;
 }
 
-/* New styles for checkbox label */
+.user-details-section input[type="email"] {
+  margin-top: 5px;
+  padding: 8px;
+  background-color: #424549;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: white;
+}
+
 .checkbox-label {
   flex-direction: row !important;
   align-items: center;
   gap: 10px;
 }
 
-/* Style for checkbox */
 .admin-checkbox, 
 .checkbox-label input[type="checkbox"] {
   width: 20px;
@@ -233,7 +240,8 @@
 }
 
 .edit-modal-content input[type="text"],
-.edit-modal-content input[type="password"] {
+.edit-modal-content input[type="password"],
+.edit-modal-content input[type="email"] {
   padding: 8px;
   background-color: #424549;
   border: 1px solid #ddd;

@@ -9,6 +9,7 @@ function UserList({ users, onEdit, onDelete }) {
           <tr>
             <th>Name</th>
             <th>Username</th>
+            <th>Email</th>
             <th>Administrator</th>
             <th>Active Books</th>
             <th>Membership Dues</th>
@@ -21,6 +22,7 @@ function UserList({ users, onEdit, onDelete }) {
             <tr key={user.id} className="user-row">
               <td>{user.name}</td>
               <td>{user.username}</td>
+              <td>{user.email}</td>
               <td>{user.administrator ? 'Yes' : 'No'}</td>
               <td>{user.active_books_checked_out ? user.active_books_checked_out.length : 0}</td>
               <td>{user.membership_dues ? `$${user.membership_dues.amount} (Due: ${user.membership_dues.due_date})` : 'N/A'}</td>
@@ -65,7 +67,8 @@ function Users() {
   useEffect(() => {
     const filtered = users.filter(user => 
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.username.toLowerCase().includes(searchTerm.toLowerCase())
+      user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase()))
     );
     setFilteredUsers(filtered);
   }, [searchTerm, users]);
@@ -93,6 +96,7 @@ function Users() {
     // Ensure all optional fields have default values
     const preparedUser = {
       ...user,
+      email: user.email || '',
       wish_list: user.wish_list || [],
       active_books_checked_out: user.active_books_checked_out || [],
       borrowing_history: user.borrowing_history || [],
@@ -112,6 +116,7 @@ function Users() {
       id: editingUser.id,
       name: editingUser.name,
       username: editingUser.username,
+      email: editingUser.email,
       administrator: Boolean(editingUser.administrator),
       active_books_checked_out: editingUser.active_books_checked_out,
       borrowing_history: editingUser.borrowing_history,
@@ -169,6 +174,7 @@ function Users() {
     setCreatingUser({
       name: '',
       username: '',
+      email: '',
       password: '',
       administrator: false
     });
@@ -180,12 +186,10 @@ function Users() {
       return;
     }
 
-    // Debug log to check the value before creating user
-    console.log("Administrator value before creating user:", creatingUser.administrator);
-
     const newUserData = {
       name: creatingUser.name,
       username: creatingUser.username,
+      email: creatingUser.email,
       password: creatingUser.password,
       administrator: !!creatingUser.administrator,
       wish_list: [],
@@ -257,7 +261,7 @@ function Users() {
       {/* Search Bar */}
       <input 
         type="text" 
-        placeholder="Search users by name or username" 
+        placeholder="Search users by name, username, or email" 
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         className="search-input"
@@ -293,6 +297,15 @@ function Users() {
                     type="text" 
                     value={editingUser.username} 
                     onChange={(e) => setEditingUser({...editingUser, username: e.target.value})}
+                  />
+                </label>
+
+                <label>
+                  Email:
+                  <input 
+                    type="email" 
+                    value={editingUser.email || ''} 
+                    onChange={(e) => setEditingUser({...editingUser, email: e.target.value})}
                   />
                 </label>
 
@@ -507,6 +520,15 @@ function Users() {
                 type="text" 
                 value={creatingUser.username || ''} 
                 onChange={(e) => setCreatingUser({...creatingUser, username: e.target.value})}
+              />
+            </label>
+
+            <label>
+              Email:
+              <input 
+                type="email" 
+                value={creatingUser.email || ''} 
+                onChange={(e) => setCreatingUser({...creatingUser, email: e.target.value})}
               />
             </label>
 

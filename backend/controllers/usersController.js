@@ -56,10 +56,11 @@ const getUserById = (req, res) => {
 
 // Function to add a new user
 const addUser = (req, res) => {
-    const { name, username, password, administrator } = req.body;
+    const { name, username, password, email, administrator } = req.body;
 
     // Check for missing fields
-    if (!name || !username || !password) return res.status(400).json({ message: "Missing required fields (name, username, password)" });
+    if (!name || !username || !password || !email) 
+        return res.status(400).json({ message: "Missing required fields (name, username, password, email)" });
 
     try {
         // Read users data from users.json
@@ -84,7 +85,7 @@ const addUser = (req, res) => {
             active_books_checked_out: [],
             borrowing_history: [],
             wish_list: [],
-            reservations: [], // Add reservations field
+            reservations: [],
             membership_dues: {
                 amount: 5,
                 due_date: formattedDueDate
@@ -95,6 +96,7 @@ const addUser = (req, res) => {
             },
             username,
             password,
+            email,
             administrator: Boolean(administrator) 
         };
 
@@ -113,7 +115,7 @@ const addUser = (req, res) => {
 
 // Function to update user
 const updateUser = (req, res) => {
-    const { id, name, username, password, active_books_checked_out, borrowing_history, wish_list, reservations, membership_dues, fees, administrator } = req.body;
+    const { id, name, username, password, email, active_books_checked_out, borrowing_history, wish_list, reservations, membership_dues, fees, administrator } = req.body;
 
     // Load users data
     const users = loadUsers();
@@ -133,6 +135,7 @@ const updateUser = (req, res) => {
         name: name ?? oldUser.name,
         username: username ?? oldUser.username,
         password: password ?? oldUser.password,
+        email: email ?? oldUser.email,
         administrator: administrator ?? oldUser.administrator,
         active_books_checked_out: active_books_checked_out ?? oldUser.active_books_checked_out,
         borrowing_history: borrowing_history ?? oldUser.borrowing_history,
