@@ -7,7 +7,7 @@ const Credits = () => {
       id: 1,
       name: "Nguyen Ho",
       role: "Project Manager",
-      imageUrl: "/api/placeholder/300/300"
+      imageUrl: "/nh.png"
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const Credits = () => {
       id: 3,
       name: "Griffin Johnson",
       role: "Designer",
-      imageUrl: "/api/placeholder/300/300"
+      imageUrl: "/gj.png"
     },
     {
       id: 4,
@@ -31,13 +31,13 @@ const Credits = () => {
       id: 5,
       name: "Daniel Balolong",
       role: "Programmer",
-      imageUrl: "/api/placeholder/300/300"
+      imageUrl: "/db.png"
     },
     {
       id: 6,
       name: "Ivan Lin",
       role: "Programmer",
-      imageUrl: "/api/placeholder/300/300"
+      imageUrl: "/il.png"
     },
     {
       id: 7,
@@ -61,16 +61,12 @@ const Credits = () => {
         {teamMembers.map((member) => (
           <div key={member.id} className="team-member">
             <div className="member-image-container">
-              {member.imageUrl ? (
+              {member.imageUrl && (
                 <img 
                   src={member.imageUrl} 
                   alt={`${member.name}'s profile`} 
                   className="member-image"
                 />
-              ) : (
-                <div className="placeholder-image">
-                  <User size={60} color="#9ca3af" />
-                </div>
               )}
             </div>
             <h3 className="member-name">{member.name}</h3>
