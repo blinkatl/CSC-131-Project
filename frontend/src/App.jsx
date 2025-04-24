@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Home from './Home';
 import About from './About';
 import Credits from './Credits';
@@ -39,6 +39,7 @@ function App() {
     <Router>
       <div className='app-container'>
         <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />
           {/* Public routes */}
           <Route path="/login" element={
             <FullScreenLayout>

@@ -2,7 +2,7 @@
 
 1. To download, either clone the repository from [Github](https://github.com/blinkatl/CSC-131-Project) OR download as a ZIP file.
 2. Open the terminal and ```cd``` into the extracted project folder. To install dependencies for both backend and frontend, type in the terminal:
-```cd backend```
+```cd frontend```
 
 ```npm install```
 
