@@ -1,182 +1,236 @@
 /* UserMembership.css */
+:root {
+  --membership-bg: #2c3e50;
+  --membership-card-shadow: rgba(0, 0, 0, 0.2);
+  --membership-text: #ecf0f1;
+  --membership-header-bg: #3a86ff;
+  --membership-header-text: white;
+  --membership-border: #34495e;
+  --membership-card-bg: #34495e;
+  --membership-card-header-bg: #1e2b38;
+  --membership-divider: #42596b;
+  --membership-input-bg: #2c3e50;
+  --membership-button-bg: #3a86ff;
+  --membership-button-hover: #2970e2;
+  --membership-button-active: #1b5cc5;
+  --membership-loader-border: #34495e;
+  --membership-loader-active: #3a86ff;
+  --alert-error-bg: #ffebee;
+  --alert-error-text: #c62828;
+  --alert-error-border: #ef9a9a;
+  --alert-success-bg: #e8f5e9;
+  --alert-success-text: #2e7d32;
+  --alert-success-border: #a5d6a7;
+  --alert-warning-bg: #fff8e1;
+  --alert-warning-text: #f57f17;
+  --alert-warning-border: #ffe082;
+}
+
+.high-contrast {
+  --membership-bg: #000000;
+  --membership-card-shadow: rgba(255, 255, 255, 0.3);
+  --membership-text: #ffffff;
+  --membership-header-bg: #0000cc;
+  --membership-header-text: #ffffff;
+  --membership-border: #ffffff;
+  --membership-card-bg: #000000;
+  --membership-card-header-bg: #0000cc;
+  --membership-divider: #ffffff;
+  --membership-input-bg: #000000;
+  --membership-button-bg: #ffff00;
+  --membership-button-hover: #cccc00;
+  --membership-button-active: #999900;
+  --membership-loader-border: #ffffff;
+  --membership-loader-active: #ffff00;
+  --alert-error-bg: #990000;
+  --alert-error-text: #ffffff;
+  --alert-error-border: #ff0000;
+  --alert-success-bg: #006600;
+  --alert-success-text: #ffffff;
+  --alert-success-border: #00cc00;
+  --alert-warning-bg: #996600;
+  --alert-warning-text: #ffffff;
+  --alert-warning-border: #ffcc00;
+}
+
 .membership-container {
-    padding: 2rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .membership-card {
-    background-color: #2c3e50;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    color: #ecf0f1;
-  }
-  
-  .card-header {
-    background-color: #3a86ff;
-    color: white;
-    padding: 1rem 1.5rem;
-  }
-  
-  .card-header h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-  
-  .card-body {
-    padding: 1.5rem;
-  }
-  
-  .alert {
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-  
-  .error {
-    background-color: #ffebee;
-    color: #c62828;
-    border: 1px solid #ef9a9a;
-  }
-  
-  .success {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    border: 1px solid #a5d6a7;
-  }
-  
-  .warning {
-    background-color: #fff8e1;
-    color: #f57f17;
-    border: 1px solid #ffe082;
-  }
-  
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.membership-card {
+  background-color: var(--membership-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--membership-card-shadow);
+  overflow: hidden;
+  color: var(--membership-text);
+}
+
+.card-header {
+  background-color: var(--membership-header-bg);
+  color: var(--membership-header-text);
+  padding: 1rem 1.5rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.error {
+  background-color: var(--alert-error-bg);
+  color: var(--alert-error-text);
+  border: 1px solid var(--alert-error-border);
+}
+
+.success {
+  background-color: var(--alert-success-bg);
+  color: var(--alert-success-text);
+  border: 1px solid var(--alert-success-border);
+}
+
+.warning {
+  background-color: var(--alert-warning-bg);
+  color: var(--alert-warning-text);
+  border: 1px solid var(--alert-warning-border);
+}
+
+.payment-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
   .payment-sections {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
   }
-  
-  @media (min-width: 768px) {
-    .payment-sections {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  .payment-card {
-    border: 1px solid #34495e;
-    border-radius: 6px;
-    overflow: hidden;
-    height: 100%;
-    background-color: #34495e;
-  }
-  
-  .payment-header {
-    background-color: #1e2b38;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #34495e;
-  }
-  
-  .payment-header h5 {
-    margin: 0;
-    color: #ecf0f1;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-  
-  .payment-content {
-    padding: 1rem;
-  }
-  
-  .payment-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #42596b;
-  }
-  
-  .payment-info.total {
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-    border-top: 1px solid #42596b;
-    padding-top: 0.75rem;
-  }
-  
-  .amount {
-    color: #ecf0f1;
-    font-weight: 600;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #ecf0f1;
-    font-weight: 500;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 0.65rem 0.75rem;
-    border: 1px solid #42596b;
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-  }
-  
-  .form-group input:focus {
-    outline: none;
-    border-color: #3a86ff;
-    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
-  }
-  
-  .payment-button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #3a86ff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .payment-button:hover {
-    background-color: #2970e2;
-  }
-  
-  .payment-button:active {
-    background-color: #1b5cc5;
-  }
-  
-  .loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 300px;
-  }
-  
-  .loader {
-    border: 4px solid #34495e;
-    border-top: 4px solid #3a86ff;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
+
+.payment-card {
+  border: 1px solid var(--membership-border);
+  border-radius: 6px;
+  overflow: hidden;
+  height: 100%;
+  background-color: var(--membership-card-bg);
+}
+
+.payment-header {
+  background-color: var(--membership-card-header-bg);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--membership-border);
+}
+
+.payment-header h5 {
+  margin: 0;
+  color: var(--membership-text);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.payment-content {
+  padding: 1rem;
+}
+
+.payment-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--membership-divider);
+}
+
+.payment-info.total {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--membership-divider);
+  padding-top: 0.75rem;
+}
+
+.amount {
+  color: var(--membership-text);
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--membership-text);
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--membership-divider);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--membership-input-bg);
+  color: var(--membership-text);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--membership-header-bg);
+  box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+}
+
+.payment-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--membership-button-bg);
+  color: var(--membership-header-text);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.payment-button:hover {
+  background-color: var(--membership-button-hover);
+}
+
+.payment-button:active {
+  background-color: var(--membership-button-active);
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.loader {
+  border: 4px solid var(--membership-loader-border);
+  border-top: 4px solid var(--membership-loader-active);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

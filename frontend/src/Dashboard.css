@@ -1,12 +1,48 @@
+:root {
+  --dashboard-bg: transparent;
+  --text-color: inherit;
+  --card-bg: #2c2f33;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-text: white;
+  --card-heading: #ffffff;
+  --card-action: blue;
+  --users-card-bg: #3498db;
+  --books-card-bg: #f39c12;
+  --fees-card-bg: #2ecc71;
+  --reminder-btn-bg: #e74c3c;
+  --reminder-btn-hover: #c0392b;
+  --reminder-btn-disabled: #95a5a6;
+}
+
+.high-contrast {
+  --dashboard-bg: #000000;
+  --text-color: #ffffff;
+  --card-bg: #121212;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --card-text: #ffffff;
+  --card-heading: #ffffff;
+  --card-action: #00ffff;
+  --users-card-bg: #0066cc;
+  --books-card-bg: #cc6600;
+  --fees-card-bg: #008800;
+  --reminder-btn-bg: #cc0000;
+  --reminder-btn-hover: #990000;
+  --reminder-btn-disabled: #555555;
+}
+
 .dashboard {
   padding: 20px;
   margin-left: 20px;
   position: relative;
   min-height: 100vh;
+  background-color: var(--dashboard-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dashboard h1 {
   font-size: 30px;
+  color: var(--text-color);
 }
 
 .dashboard-grid {
@@ -15,23 +51,38 @@
   gap: 20px;
 }
 
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .dashboard-card {
-  background-color: #2c2f33;
+  background-color: var(--card-bg);
   border-radius: 8px;
   padding: 20px;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  color: var(--card-text);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.high-contrast .dashboard-card {
+  border: 2px solid white;
 }
 
 .dashboard-card:hover {
   transform: scale(1.03);
 }
 
+.dashboard-card:focus-within {
+  outline: 3px solid var(--card-action);
+}
+
 .dashboard-card h2 {
   margin-bottom: 15px;
   font-size: 20px;
-  color: #ffffff;
+  color: var(--card-heading);
 }
 
 .card-content {
@@ -47,24 +98,36 @@
 
 .card-action {
   cursor: pointer;
-  color: blue;
+  color: var(--card-action);
   text-decoration: underline;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.high-contrast .card-action {
+  background-color: #000000;
+  padding: 5px 10px;
+  border: 1px solid white;
 }
 
 .card-action:hover {
   opacity: 0.7;
 }
 
+.card-action:focus {
+  outline: 3px solid var(--card-action);
+}
+
 .users-card {
-  background-color: #3498db;
+  background-color: var(--users-card-bg);
 }
 
 .books-card {
-  background-color: #f39c12;
+  background-color: var(--books-card-bg);
 }
 
 .fees-card {
-  background-color: #2ecc71;
+  background-color: var(--fees-card-bg);
 }
 
 .reminder-button {
@@ -72,7 +135,7 @@
   bottom: 20px;
   left: 20px;
   padding: 10px 15px;
-  background-color: #e74c3c;
+  background-color: var(--reminder-btn-bg);
   color: white;
   border: none;
   border-radius: 4px;
@@ -81,11 +144,23 @@
   transition: background-color 0.3s ease;
 }
 
+.high-contrast .reminder-button {
+  border: 2px solid white;
+}
+
 .reminder-button:hover {
-  background-color: #c0392b;
+  background-color: var(--reminder-btn-hover);
+}
+
+.reminder-button:focus {
+  outline: 3px solid #ffffff;
+}
+
+.high-contrast .reminder-button:focus {
+  outline: 3px solid #ffff00;
 }
 
 .reminder-button:disabled {
-  background-color: #95a5a6;
+  background-color: var(--reminder-btn-disabled);
   cursor: not-allowed;
 }

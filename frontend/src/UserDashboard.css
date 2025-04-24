@@ -1,23 +1,71 @@
+:root {
+  --dashboard-bg: transparent;
+  --text-color: #f0f0f0;
+  --header-color: white;
+  --date-color: #666;
+  --card-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  --card-hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --view-all-color: #3498db;
+  --button-bg: #3498db;
+  --button-hover: #2980b9;
+  --subtext-color: #aaa;
+  --active-status: #2ecc71;
+  --due-status: #e74c3c;
+  --search-border: #444;
+  --search-bg: #333;
+  --search-focus: #3498db;
+  --empty-state: #888;
+  --loading-color: #666;
+  --error-color: #e74c3c;
+  --book-info-color: #f0f0f0;
+}
+
+.high-contrast {
+  --dashboard-bg: #000000;
+  --text-color: #ffffff;
+  --header-color: #ffffff;
+  --date-color: #cccccc;
+  --card-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  --card-hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  --border-color: #ffffff;
+  --view-all-color: #00ffff;
+  --button-bg: #0066cc;
+  --button-hover: #0055aa;
+  --subtext-color: #dddddd;
+  --active-status: #00aa00;
+  --due-status: #cc0000;
+  --search-border: #ffffff;
+  --search-bg: #121212;
+  --search-focus: #00ffff;
+  --empty-state: #cccccc;
+  --loading-color: #cccccc;
+  --error-color: #ff3333;
+  --book-info-color: #ffffff;
+}
+
 .user-dashboard {
   max-width: 1200px;
   margin: 0 auto;
   padding: 15px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--dashboard-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dashboard-header {
   margin-bottom: 20px;
-  color: #333;
 }
 
 .dashboard-header h1 {
   font-size: 1.8rem;
   margin-bottom: 2px;
-  color: white
+  color: var(--header-color);
 }
 
 .date-display {
-  color: #666;
+  color: var(--date-color);
   font-size: 0.9rem;
 }
 
@@ -36,18 +84,27 @@
 .dashboard-card {
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--card-shadow);
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
-  color: #f0f0f0;
+  color: var(--text-color);
   height: auto;
   min-height: 220px;
+  border: 1px solid transparent;
+}
+
+.high-contrast .dashboard-card {
+  border: 1px solid var(--border-color);
 }
 
 .dashboard-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.dashboard-card:focus-within {
+  outline: 3px solid var(--view-all-color);
 }
 
 .card-header {
@@ -55,7 +112,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .card-header h2 {
@@ -65,13 +122,29 @@
 }
 
 .view-all {
-  color: #3498db;
+  color: var(--view-all-color);
   text-decoration: none;
   font-size: 0.8rem;
+  padding: 2px 5px;
+}
+
+.high-contrast .view-all {
+  text-decoration: underline;
+  border: 1px solid var(--view-all-color);
+  border-radius: 3px;
 }
 
 .view-all:hover {
   text-decoration: underline;
+}
+
+.view-all:focus {
+  outline: 2px solid var(--view-all-color);
+  border-radius: 3px;
+}
+
+.high-contrast .view-all:focus {
+  outline: 2px solid #ffff00;
 }
 
 .card-content {
@@ -91,12 +164,12 @@
 
 .card-footer {
   padding: 10px 15px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-color);
 }
 
 .action-button {
   display: inline-block;
-  background-color: #3498db;
+  background-color: var(--button-bg);
   color: white;
   padding: 6px 12px;
   border-radius: 4px;
@@ -105,11 +178,22 @@
   transition: background-color 0.2s;
 }
 
-.action-button:hover {
-  background-color: #2980b9;
+.high-contrast .action-button {
+  border: 1px solid white;
 }
 
-/* Book list styles */
+.action-button:hover {
+  background-color: var(--button-hover);
+}
+
+.action-button:focus {
+  outline: 3px solid var(--view-all-color);
+}
+
+.high-contrast .action-button:focus {
+  outline: 3px solid #ffff00;
+}
+
 .book-list, .reservation-list, .activity-list, .notification-list, .wishlist-list {
   list-style: none;
   padding: 0;
@@ -120,7 +204,7 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .book-item:last-child, .reservation-item:last-child, .activity-item:last-child, 
@@ -132,13 +216,13 @@
   margin: 0 0 3px 0;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #f0f0f0;
+  color: var(--book-info-color);
 }
 
 .book-info p, .notification-details p {
   margin: 0;
   font-size: 0.8rem;
-  color: #aaa;
+  color: var(--subtext-color);
 }
 
 .book-due-date, .wishlist-date {
@@ -147,11 +231,10 @@
 }
 
 .overdue {
-  color: #e74c3c;
+  color: var(--due-status);
   font-weight: bold;
 }
 
-/* Membership and fees styles */
 .membership-content {
   display: flex;
   flex-direction: column;
@@ -172,12 +255,12 @@
 }
 
 .status-badge.active {
-  background-color: #2ecc71;
+  background-color: var(--active-status);
   color: white;
 }
 
 .status-badge.due {
-  background-color: #e74c3c;
+  background-color: var(--due-status);
   color: white;
 }
 
@@ -197,12 +280,12 @@
   justify-content: space-between;
   font-size: 0.85rem;
   padding: 3px 0;
-  color: #ddd;
+  color: var(--text-color);
 }
 
 .fees-total {
   font-weight: bold;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-color);
   padding-top: 5px !important;
   margin-top: 3px;
 }
@@ -216,7 +299,7 @@
   width: 20px;
   height: 20px;
   flex-shrink: 0;
-  color: #3498db;
+  color: var(--view-all-color);
 }
 
 .activity-details, .notification-details {
@@ -230,12 +313,12 @@
 
 .activity-date, .notification-date {
   font-size: 0.7rem;
-  color: #aaa;
+  color: var(--subtext-color);
   margin-top: 3px;
 }
 
 .empty-state {
-  color: #888;
+  color: var(--empty-state);
   font-style: italic;
   text-align: center;
   padding: 15px 0;
@@ -246,14 +329,14 @@
   text-align: center;
   padding: 30px;
   font-size: 1.1rem;
-  color: #666;
+  color: var(--loading-color);
 }
 
 .error {
   text-align: center;
   padding: 30px;
   font-size: 1.1rem;
-  color: #e74c3c;
+  color: var(--error-color);
 }
 
 .search-container {
@@ -265,21 +348,25 @@
   width: 100%;
   padding: 10px 12px;
   font-size: 0.9rem;
-  border: 1px solid #444;
-  background-color: #333;
-  color: #f0f0f0;
+  border: 1px solid var(--search-border);
+  background-color: var(--search-bg);
+  color: var(--text-color);
   border-radius: 6px;
   transition: border-color 0.2s;
 }
 
 .search-input:focus {
-  border-color: #3498db;
+  border-color: var(--search-focus);
   outline: none;
+}
+
+.high-contrast .search-input:focus {
+  outline: 3px solid var(--search-focus);
 }
 
 .search-loading {
   margin-top: 8px;
-  color: #aaa;
+  color: var(--subtext-color);
   font-style: italic;
   font-size: 0.8rem;
 }
@@ -289,15 +376,15 @@
   top: calc(100% + 5px);
   left: 0;
   right: 0;
-  background-color: #333;
-  border: 1px solid #444;
+  background-color: var(--search-bg);
+  border: 1px solid var(--search-border);
   border-radius: 6px;
   max-height: 300px;
   overflow-y: auto;
   z-index: 100;
   padding: 0;
   list-style: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--card-shadow);
 }
 
 .search-result-item {
@@ -305,7 +392,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 12px;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .search-result-item:last-child {
@@ -334,7 +421,7 @@
 
 .no-results {
   margin-top: 8px;
-  color: #aaa;
+  color: var(--subtext-color);
   font-style: italic;
   font-size: 0.8rem;
 }
