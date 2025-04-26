@@ -13,7 +13,7 @@ const Credits = () => {
       id: 2,
       name: "Bao Truong",
       role: "Analyst",
-      imageUrl: "/api/placeholder/300/300"
+      imageUrl: "/bt.png"
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ const Credits = () => {
       id: 4,
       name: "Samuel Worcester",
       role: "Designer",
-      imageUrl: "/api/placeholder/300/300"
+      imageUrl: "/sw.png"
     },
     {
       id: 5,
@@ -43,13 +43,13 @@ const Credits = () => {
       id: 7,
       name: "Michael Nguyen",
       role: "Programmer",
-      imageUrl: "/api/placeholder/300/300"
+      imageUrl: "/mn.png"
     },
     {
       id: 8,
       name: "Richard Chao",
       role: "Quality Control",
-      imageUrl: "/api/placeholder/300/300"
+      imageUrl: "/rc.png"
     }
   ];
 
