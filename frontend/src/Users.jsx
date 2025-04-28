@@ -162,6 +162,51 @@ function Users() {
     setEditingUser(updatedUser);
   };
 
+  const handleRemoveActiveBook = (bookIndex) => {
+    const updatedUser = {...editingUser};
+    
+    const removedBook = updatedUser.active_books_checked_out[bookIndex];
+    
+    if (removedBook) {
+      const historyEntry = {
+        book_id: removedBook.book_id,
+        title: removedBook.title,
+        borrowed_date: removedBook.checkout_date || new Date().toISOString().split('T')[0],
+        returned_date: new Date().toISOString().split('T')[0]
+      };
+      
+      updatedUser.borrowing_history = updatedUser.borrowing_history || []; 
+      updatedUser.borrowing_history.push(historyEntry);
+      updatedUser.active_books_checked_out.splice(bookIndex, 1);
+      
+      fetch(`http://localhost:3000/users/${updatedUser.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: updatedUser.id,
+          active_books_checked_out: updatedUser.active_books_checked_out,
+          borrowing_history: updatedUser.borrowing_history
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to update user');
+        }
+      })
+      .then(data => {
+        setEditingUser(data);
+      })
+      .catch(error => {
+        console.error('Error removing book:', error);
+        alert('Failed to remove book. Please try again.');
+      });
+    }
+  };
+
   const handleRemoveWishlistBook = (bookIndex) => {
     const updatedUser = {...editingUser};
     updatedUser.wish_list.splice(bookIndex, 1);
@@ -412,6 +457,12 @@ function Users() {
                               />
                             </td>
                             <td>
+                              <button 
+                                className="delete-btn"
+                                onClick={() => handleRemoveActiveBook(index)}
+                              >
+                                Remove
+                              </button>
                             </td>
                           </tr>
                         ))}
