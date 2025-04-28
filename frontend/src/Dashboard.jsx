@@ -62,7 +62,7 @@ function Dashboard() {
             console.log(`Email to ${preview.user} (${preview.email}): ${preview.previewUrl}`);
           });
         }
-        alert('Due date reminder emails sent successfully!');
+        alert('Due date reminder emails sent successfully! Check browser console for email links.');
       })
       .catch(error => {
         console.error('Error sending reminder emails:', error);

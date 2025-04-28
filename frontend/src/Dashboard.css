@@ -1,6 +1,7 @@
 :root {
   --dashboard-bg: transparent;
   --text-color: inherit;
+  --heading-color: white;
   --card-bg: #2c2f33;
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --card-text: white;
@@ -17,6 +18,7 @@
 .high-contrast {
   --dashboard-bg: #000000;
   --text-color: #ffffff;
+  --heading-color: white;
   --card-bg: #121212;
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   --card-text: #ffffff;
@@ -42,7 +44,8 @@
 
 .dashboard h1 {
   font-size: 30px;
-  color: var(--text-color);
+  color: var(--heading-color);
+  margin-bottom: 40px;
 }
 
 .dashboard-grid {
