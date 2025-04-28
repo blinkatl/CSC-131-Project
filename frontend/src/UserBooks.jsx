@@ -186,7 +186,6 @@ function UserBooks() {
     try {
       const token = localStorage.getItem('token');
       
-      // First check if book has reservations
       const bookResponse = await fetch(`http://localhost:3000/books/${bookId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -199,7 +198,6 @@ function UserBooks() {
       
       const bookData = await bookResponse.json();
       
-      // If book has a reservation, don't allow renewal
       if (bookData.reservation) {
         setActionStatus({
           type: 'renew',
@@ -209,10 +207,8 @@ function UserBooks() {
         return;
       }
       
-      // If no reservation, extend due date by 14 days
       const newDueDate = extendDueDate(dueDate);
 
-      // Update the book with new due date
       const updateResponse = await fetch(`http://localhost:3000/books/${bookId}`, {
         method: 'PATCH',
         headers: {
@@ -231,8 +227,21 @@ function UserBooks() {
         throw new Error('Failed to renew book');
       }
 
-      // Update user data to reflect changes
       await fetchUserData();
+      
+      setUserData(prevData => {
+        const updatedBooks = prevData.active_books_checked_out.map(book => {
+          if (book.book_id === bookId) {
+            return {...book, due_date: newDueDate};
+          }
+          return book;
+        });
+        
+        return {
+          ...prevData,
+          active_books_checked_out: updatedBooks
+        };
+      });
       
       setActionStatus({
         type: 'renew',
@@ -240,11 +249,9 @@ function UserBooks() {
         success: true
       });
       
-      // Reset selected book
       setSelectedBook(null);
       setShowBookActions(false);
       
-      // Clear status message after 5 seconds
       setTimeout(() => setActionStatus({ type: '', message: '', success: false }), 5000);
     } catch (error) {
       console.error("Error renewing book:", error);
