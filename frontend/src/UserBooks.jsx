@@ -132,54 +132,62 @@ function UserBooks() {
 
   // Get earliest available date for reservation
   const getEarliestAvailableDate = async (bookId) => {
-  try {
-    const response = await fetch(`http://localhost:3000/books/${bookId}`, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    try {
+      const response = await fetch(`http://localhost:3000/books/${bookId}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch book information');
       }
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch book information');
-    }
-
-    const bookData = await response.json();
-
-    let latestDate = null;
-
-    // Start by checking existing reservations
-    if (bookData.reservations && Array.isArray(bookData.reservations)) {
-      const sortedReservations = [...bookData.reservations]
-        .filter(r => r.end_date)
-        .sort((a, b) => new Date(a.end_date) - new Date(b.end_date));
-
-      if (sortedReservations.length > 0) {
-        const lastEndDate = new Date(sortedReservations[sortedReservations.length - 1].end_date);
-        lastEndDate.setDate(lastEndDate.getDate() + 1);
-        latestDate = lastEndDate;
+  
+      const bookData = await response.json();
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Normalize today to start of day for comparison
+      let latestDate = null;
+  
+      // Start by checking existing reservations
+      if (bookData.reservations && Array.isArray(bookData.reservations)) {
+        const sortedReservations = [...bookData.reservations]
+          .filter(r => r.end_date)
+          .sort((a, b) => new Date(a.end_date) - new Date(b.end_date));
+  
+        if (sortedReservations.length > 0) {
+          const lastEndDate = new Date(sortedReservations[sortedReservations.length - 1].end_date);
+          lastEndDate.setDate(lastEndDate.getDate() + 1);
+          latestDate = lastEndDate;
+        }
       }
-    }
-
-    // If no reservations, fallback to due date or tomorrow
-    if (!latestDate) {
-      if (bookData.checked_out && bookData.borrower?.due_date) {
-        const dueDateObj = new Date(bookData.borrower.due_date);
-        dueDateObj.setDate(dueDateObj.getDate() + 1);
-        latestDate = dueDateObj;
-      } else {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        latestDate = tomorrow;
+  
+      // If no reservations, check if book is currently checked out
+      if (!latestDate) {
+        if (bookData.checked_out && bookData.borrower?.due_date) {
+          // Book is checked out, compare due date with today
+          const dueDateObj = new Date(bookData.borrower.due_date);
+          dueDateObj.setHours(0, 0, 0, 0); // Normalize due date to start of day
+          
+          if (dueDateObj >= today) {
+            // Due date is in the future, set reservation to day after due date
+            dueDateObj.setDate(dueDateObj.getDate() + 1);
+            latestDate = dueDateObj;
+          } else {
+            // Due date has passed, set reservation to today
+            latestDate = today;
+          }
+        } else {
+          // Book is not checked out, set reservation to today
+          latestDate = today;
+        }
       }
+  
+      return latestDate.toISOString().split('T')[0];
+    } catch (error) {
+      console.error("Error getting earliest available date:", error);
+      return null;
     }
-
-    return latestDate.toISOString().split('T')[0];
-  } catch (error) {
-    console.error("Error getting earliest available date:", error);
-    return null;
-  }
-};
-
+  };
 
   // Handle renew button click
   const handleRenew = async (bookId, dueDate) => {
